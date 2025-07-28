@@ -10,13 +10,14 @@ public class SeedController : MonoBehaviour
     private bool _collected;
     private Coroutine _coroutineCollect;
 
-    private void Awake()
+    private void Start()
     {
         _positionPlayer = GameObject.FindWithTag("Player").transform;
     }
 
     private void OnMouseDown()
     {
+        Debug.Log("Entro");
         if (_coroutineCollect == null)
         {
             _coroutineCollect = StartCoroutine(StartCollect());

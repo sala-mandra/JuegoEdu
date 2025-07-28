@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Android;
@@ -9,41 +8,53 @@ public class ARController : MonoBehaviour
     [SerializeField] private GameObject _arSessionGO;
     [SerializeField] private GameObject _arCameraOriginGO;
 
-    private void Start()
+    private IEnumerator Start()
     {
-#if UNITY_ANDROID
+#if PLATFORM_ANDROID
         if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
         {
             Permission.RequestUserPermission(Permission.Camera);
-            StartCoroutine(WaitForCameraPermission());
         }
-        else
-        {
-            EnableObjectAR();
-        }
-#endif
-    }
 
-    private IEnumerator WaitForCameraPermission()
-    {
-#if UNITY_ANDROID
         while (!Permission.HasUserAuthorizedPermission(Permission.Camera))
         {
             yield return null;
         }
-        EnableObjectAR();
 #endif
-    }
 
-    private void EnableObjectAR()
-    {
+        yield return new WaitForSeconds(0.5f);
+
+        yield return StartCoroutine(InitializeARSession());
+
         _arSessionGO.SetActive(true);
         _arCameraOriginGO.SetActive(true);
-        
-        var session = _arSessionGO.GetComponent<ARSession>();
-        if (session != null)
+
+        yield return new WaitForSeconds(1);
+
+        GameController.Instance.StartGame();
+    }
+
+    private IEnumerator InitializeARSession()
+    {
+        yield return ARSession.CheckAvailability();
+
+        if (ARSession.state == ARSessionState.NeedsInstall)
         {
-            session.Reset();
+            Debug.Log("AR Session requires installation. Attempting to install...");
+            yield return ARSession.Install();
+
+            if (ARSession.state != ARSessionState.Ready)
+            {
+                Debug.LogError("AR installation failed. AR is not available.");
+                yield break;
+            }
         }
+        else if (ARSession.state != ARSessionState.Ready)
+        {
+            Debug.Log("AR is not available on this device.");
+            yield break;
+        }
+
+        Debug.Log("AR Session is ready.");
     }
 }
