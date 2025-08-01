@@ -123,5 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93c23a8edaeaf342b6ff184d2995927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeObjectDrag: 1
   _speedAnimation: 1.2
   _minDistance: 0.5
+  _layerBaseGuide:
+    serializedVersion: 2
+    m_Bits: 8

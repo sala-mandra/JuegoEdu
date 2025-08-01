@@ -21,12 +21,13 @@ public class SpawnSeedsController : MonoBehaviour
 
     public void GeneratePartsAround(List<GameObject> partsOfSpawn)
     {
-        var amountParts = GameController.Instance.AmountSpawn;
+        //var amountParts = GameController.Instance.AmountSpawn;
+        var amountParts = partsOfSpawn.Count;
         if (partsOfSpawn.Count > 0)
         {
             for (var i = 0; i < amountParts; i++)
             {
-                var prefabSeed = partsOfSpawn[0];
+                var prefabSeed = partsOfSpawn[i];
                 var offset2d = Random.insideUnitCircle * _radiusSpawn;
                 var offset = new Vector3(offset2d.x, 0, offset2d.y);
 

@@ -1,25 +1,28 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using System.Collections;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
-    public int AmountSpawn = 5;
+    public Phase CurrentPhase = Phase.Collecting;
     
     [SerializeField] List<ObjectsToSpawn> _partsToSpawn;
     [SerializeField] List<ObjectsToSpawn> _partsCollectedPlayers;
+    [SerializeField] private GameObject[] _baseGuides;
+    [SerializeField] private GameObject[] _plantedPlants;
+    [SerializeField] private GameObject[] _zoneSown;
+    [SerializeField] private Color _colorTurnOne;
+    [SerializeField] private Color _colorTurnTwo;
+    [SerializeField] private TextMeshProUGUI _textTurn;
+    [SerializeField] private TextMeshProUGUI _textPhase;
+    [SerializeField] private Transform _cameraParent;
 
     private int _currentTurn;
     private int _totalPlayers => _partsToSpawn.Count;
-    
-    private enum Phase
-    {
-        Collecting,
-        Arranging,
-        Finished
-    }
-
-    private Phase _currentPhase = Phase.Collecting;
+    private int _currentCollected;
 
     private void Awake()
     {
@@ -36,21 +39,63 @@ public class GameController : MonoBehaviour
 
     public void AddCollectedPart(GameObject collectObj)
     {
-        if (_currentPhase != Phase.Collecting)
+        if (CurrentPhase != Phase.Collecting)
         {
             Debug.LogWarning("Esta no es la fase actual");
             return;
         }
 
+        var amountSpawn = _partsToSpawn[_currentTurn].PrefabsParts.Count;
         var list = _partsCollectedPlayers[_currentTurn].PrefabsParts;
-        if (list.Count < AmountSpawn)
+        if (list.Count < amountSpawn)
         {
             list.Add(collectObj);
-            Debug.Log($"Pieza recolectada (turno {_currentTurn + 1}): {list.Count}/{AmountSpawn}");
+            var currenType = collectObj.GetComponent<SeedController>().TypeObjectDrag;
+            if (currenType == TypeObject.Shovel)
+            {
+                AddFirstOrLastPosInList(collectObj, list, true);
+            }
+            else
+            {
+                AddFirstOrLastPosInList(collectObj, list, false);
+            }
+            
+            Debug.Log($"Pieza recolectada (turno {_currentTurn + 1}): {list.Count}/{amountSpawn}");
 
-            if (list.Count >= AmountSpawn)
+            if (list.Count >= amountSpawn)
             {
                 NextCollectingTurn();
+            }
+        }
+    }
+
+    private void AddFirstOrLastPosInList(GameObject objectCollect, List<GameObject> listToAdd, bool first)
+    {
+        if (first)
+        {
+            if (listToAdd[0] != null)
+            {
+                var objectTempInZeroPos = listToAdd[0];
+                var indexTemp = listToAdd.IndexOf(objectCollect);
+                listToAdd[0] = objectCollect;
+                listToAdd[indexTemp] = objectTempInZeroPos;
+            }
+        }
+        else
+        {
+            var waterObject = listToAdd
+                .FirstOrDefault(obj => obj != null &&
+                    obj.GetComponent<SeedController>() != null &&
+                    obj.GetComponent<SeedController>().TypeObjectDrag == TypeObject.Water);
+
+            if (waterObject != null)
+            {
+                int waterIndex = listToAdd.IndexOf(waterObject);
+                if (waterIndex != listToAdd.Count - 1)
+                {
+                    listToAdd.RemoveAt(waterIndex);
+                    listToAdd.Add(waterObject);
+                }
             }
         }
     }
@@ -60,10 +105,37 @@ public class GameController : MonoBehaviour
         _currentTurn++;
         StartPhase();
     }
+    
+    public void EnableNextDragObject()
+    {
+        if (CurrentPhase != Phase.Arranging)
+            return;
+
+        if (_partsCollectedPlayers[_currentTurn].PrefabsParts.Count == 0)
+        {
+            Debug.Log($"[Arrange] Jugador {_currentTurn + 1} completó su turno");
+            NextArrangingTurn();
+            return;
+        }
+        
+        var requiredPart = _partsCollectedPlayers[_currentTurn].PrefabsParts[_currentCollected];
+        SetNewTransform(requiredPart);        
+        requiredPart.SetActive(true);
+        
+        _partsCollectedPlayers[_currentTurn].PrefabsParts.RemoveAt(0);
+    }
+
+    public void EnableAnimationPlantedPlants()
+    {
+        foreach (var plant in _plantedPlants)
+        {
+            plant.SetActive(true);
+        }
+    }
 
     private void StartPhase()
     {
-        switch (_currentPhase)
+        switch (CurrentPhase)
         {
             case Phase.Collecting:
                 StartCollectingTurn();
@@ -73,22 +145,27 @@ public class GameController : MonoBehaviour
                 break;
             case Phase.Finished:
                 Debug.Log("Juego terminado");
+                EndGame();
                 break;
         }
+        StartCoroutine(StartAnimationTextTurn());
     }
 
     private void StartCollectingTurn()
     {
         if (_currentTurn < _totalPlayers)
         {
+            _textPhase.text = "Fase de recolección";
+            _textTurn.color = _colorTurnOne;
+            _textTurn.text = "Turno " + (_currentTurn + 1);
             Debug.Log($"[Collect] turno {_currentTurn + 1}");
             SpawnSeedsController.Instance.GeneratePartsAround(_partsToSpawn[_currentTurn].PrefabsParts);
         }
         else
         {
-            Debug.Log("Primera ronda completa");
+            Debug.Log("primer fase completa");
             _currentTurn = 0;
-            _currentPhase = Phase.Arranging;
+            CurrentPhase = Phase.Arranging;
             StartPhase();
         }
     }
@@ -97,57 +174,69 @@ public class GameController : MonoBehaviour
     {
         if (_currentTurn < _totalPlayers)
         {
+            _textPhase.text = "Fase de armado";
+            _textTurn.color = _colorTurnTwo;
+            _textTurn.text = "Turno " + (_currentTurn + 1);
             Debug.Log($"[Armado] turno {_currentTurn + 1}");
-            
-        }
-    }
-//------------------------------------------------------------------------------------------------------------------------------
-    public void StartGame()
-    {
-        StartTurn();
-    }
-    
-    private void StartTurn()
-    {
-        if (_currentTurn < _totalPlayers)
-        {
-            Debug.Log($"Start turn {_currentTurn + 1}");
-            SpawnSeedsController.Instance.GeneratePartsAround(_partsToSpawn[_currentTurn].PrefabsParts);
+            _baseGuides[_currentTurn].SetActive(true);
+            StartCoroutine(EnableGuidesArranging());
         }
         else
         {
-            EndGame();
+            Debug.Log("segunda fase completa");
+            _currentTurn = 0;
+            CurrentPhase = Phase.Finished;
+            StartPhase();
         }
     }
+
+    private void SetNewTransform(GameObject objectToDrag)
+    {
+        objectToDrag.transform.parent = _cameraParent;
+        var posTemp = objectToDrag.transform.localPosition;
+        posTemp.x = 0;
+        posTemp.y = 0;
+        posTemp.z = 0;
+        objectToDrag.transform.localPosition = posTemp;
+
+        var newRotation = objectToDrag.transform.localRotation;
+        newRotation.x = 0;
+        newRotation.y = 0;
+        newRotation.z = 0;
+        objectToDrag.transform.localRotation = newRotation;
+
+        var newScale = objectToDrag.transform.localScale;
+        newScale.x -= 0.8f;
+        newScale.y -= 0.8f;
+        newScale.z -= 0.8f;
+        objectToDrag.transform.localScale = newScale;
+    }
+
+    private IEnumerator StartAnimationTextTurn()
+    {
+        _textTurn.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        _textTurn.gameObject.SetActive(false);
+    }
     
-    // public void AddCollectedPart(GameObject collectObj)
-    // {
-    //     if (_currentTurn >= _partsCollectedPlayers.Count)
-    //     {
-    //         Debug.Log("Ya no hay turnos");
-    //         return;
-    //     }
-    //
-    //     var collectedList = _partsCollectedPlayers[_currentTurn].PrefabsParts;
-    //     if (collectedList.Count < AmountSpawn)
-    //     {
-    //         collectedList.Add(collectObj);
-    //         Debug.Log($"Pieza de turno {_currentTurn + 1}: {collectedList.Count} / {AmountSpawn}");
-    //         if (collectedList.Count >= AmountSpawn)
-    //         {
-    //             NextTurn();
-    //         }
-    //     }
-    // }
+    private IEnumerator EnableGuidesArranging()
+    {
+        yield return new WaitForSeconds(2f);
+        foreach (var zone in _zoneSown)
+        {
+            zone.SetActive(true);
+        }
+        EnableNextDragObject();
+    }
     
-    private void NextTurn()
+    private void NextArrangingTurn()
     {
         _currentTurn++;
-        StartTurn();
+        StartPhase();
     }
     
     private void EndGame()
     {
-        Debug.Log("Ya ha terminado la primera ronda");
+        Debug.Log("Ya ha terminado el juego");
     }
 }

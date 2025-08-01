@@ -31,7 +31,7 @@ public class ARController : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        GameController.Instance.StartGame();
+        //GameController.Instance.StartGame();
     }
 
     private IEnumerator InitializeARSession()
