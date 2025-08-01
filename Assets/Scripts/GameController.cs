@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using System.Linq;
+using UnityEngine.Serialization;
 
 public class GameController : MonoBehaviour
 {
@@ -14,8 +15,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject[] _baseGuides;
     [SerializeField] private GameObject[] _plantedPlants;
     [SerializeField] private GameObject[] _zoneSown;
-    [SerializeField] private Color _colorTurnOne;
-    [SerializeField] private Color _colorTurnTwo;
+    [SerializeField] private Color[] _colorsTurn;
     [SerializeField] private TextMeshProUGUI _textTurn;
     [SerializeField] private TextMeshProUGUI _textPhase;
     [SerializeField] private Transform _cameraParent;
@@ -156,7 +156,7 @@ public class GameController : MonoBehaviour
         if (_currentTurn < _totalPlayers)
         {
             _textPhase.text = "Fase de recolección";
-            _textTurn.color = _colorTurnOne;
+            _textTurn.color = _colorsTurn[_currentTurn];
             _textTurn.text = "Turno " + (_currentTurn + 1);
             Debug.Log($"[Collect] turno {_currentTurn + 1}");
             SpawnSeedsController.Instance.GeneratePartsAround(_partsToSpawn[_currentTurn].PrefabsParts);
@@ -175,7 +175,7 @@ public class GameController : MonoBehaviour
         if (_currentTurn < _totalPlayers)
         {
             _textPhase.text = "Fase de armado";
-            _textTurn.color = _colorTurnTwo;
+            _textTurn.color = _colorsTurn[_currentTurn];
             _textTurn.text = "Turno " + (_currentTurn + 1);
             Debug.Log($"[Armado] turno {_currentTurn + 1}");
             _baseGuides[_currentTurn].SetActive(true);

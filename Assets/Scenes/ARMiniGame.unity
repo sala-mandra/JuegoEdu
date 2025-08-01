@@ -2752,8 +2752,9 @@ MonoBehaviour:
   - {fileID: 961727576}
   - {fileID: 1031418856}
   - {fileID: 884020638}
-  _colorTurnOne: {r: 0.012220383, g: 1, b: 0, a: 1}
-  _colorTurnTwo: {r: 0, g: 0.020625114, b: 1, a: 1}
+  _colorsTurn:
+  - {r: 0.1322509, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0.09705353, b: 1, a: 1}
   _textTurn: {fileID: 551013512}
   _textPhase: {fileID: 1906255186}
   _cameraParent: {fileID: 563104362}
