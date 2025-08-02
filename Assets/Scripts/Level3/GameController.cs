@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
     public Phase CurrentPhase = Phase.Collecting;
     
+    [Header("Part for work in logic")]
     [SerializeField] List<ObjectsToSpawn> _partsToSpawn;
     [SerializeField] List<ObjectsToSpawn> _partsCollectedPlayers;
     [SerializeField] private GameObject[] _baseGuides;
@@ -20,6 +21,13 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textPhase;
     [SerializeField] private Transform _cameraParent;
 
+    [FormerlySerializedAs("_nameObject")]
+    [Header("Part of panel to show name")] 
+    [SerializeField] private TextMeshProUGUI _textNameObject;
+    [SerializeField] private GameObject _panelToShowName;
+    [SerializeField] private AudioClip _effectAudio;
+    [SerializeField] private AudioSource _audioSource;
+    
     private int _currentTurn;
     private int _totalPlayers => _partsToSpawn.Count;
     private int _currentCollected;
@@ -35,6 +43,20 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         StartPhase();
+    }
+
+    public void ShowNameObject(string name)
+    {
+        _textNameObject.text = name;
+        _audioSource.PlayOneShot(_effectAudio);
+        StartCoroutine(ShowNameTemporaly());
+    }
+
+    private IEnumerator ShowNameTemporaly()
+    {
+        _panelToShowName.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        _panelToShowName.SetActive(false);
     }
 
     public void AddCollectedPart(GameObject collectObj)

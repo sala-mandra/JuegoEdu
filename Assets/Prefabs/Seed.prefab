@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeObjectDrag: 1
+  _nameObject: "Semilla de Ma\xEDz"
   _speedAnimation: 1.2
   _minDistance: 0.5
   _layerBaseGuide:

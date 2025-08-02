@@ -4,7 +4,8 @@ using UnityEngine;
 public class SeedController : MonoBehaviour
 {
     public TypeObject TypeObjectDrag;
-    
+
+    [SerializeField] private string _nameObject;
     [SerializeField] private float _speedAnimation;
     [SerializeField] private float _minDistance = 0.5f;
     [SerializeField] private LayerMask _layerBaseGuide;
@@ -40,6 +41,7 @@ public class SeedController : MonoBehaviour
         {
             _isDragging = true;
         }
+        GameController.Instance.ShowNameObject(_nameObject);
     }
 
     private void OnMouseDrag()

@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeObjectDrag: 0
+  _nameObject: Pala
   _speedAnimation: 1.2
   _minDistance: 0.5
   _layerBaseGuide:
