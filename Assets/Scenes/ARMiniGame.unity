@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 150859468}
   - component: {fileID: 150859467}
   - component: {fileID: 150859472}
+  - component: {fileID: 150859473}
   m_Layer: 3
   m_Name: WaterBaseGuide
   m_TagString: Untagged
@@ -631,6 +632,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _materialBaseGuide: {fileID: 2100000, guid: 353b29bb1caa97144a4882e3c9f51f79, type: 2}
   _speed: 0.8
+--- !u!114 &150859473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150859466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ec2afaf0bcc3d418a214a3f12035f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceFromCamera: 10
+  _offset: {x: 2.35, y: 0.77, z: 0}
+  _useRotation: 0
 --- !u!1 &372241823
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +790,7 @@ GameObject:
   - component: {fileID: 392799358}
   - component: {fileID: 392799361}
   - component: {fileID: 392799362}
+  - component: {fileID: 392799363}
   m_Layer: 3
   m_Name: ShovelBaseGuide
   m_TagString: Untagged
@@ -900,6 +917,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _materialBaseGuide: {fileID: 2100000, guid: 353b29bb1caa97144a4882e3c9f51f79, type: 2}
   _speed: 0.8
+--- !u!114 &392799363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392799356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ec2afaf0bcc3d418a214a3f12035f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceFromCamera: 10
+  _offset: {x: 0, y: 0, z: 0}
+  _useRotation: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,37 +1429,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551013510}
   m_CullTransparentMesh: 1
---- !u!1 &563104361
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 563104362}
-  m_Layer: 0
-  m_Name: ParentDragObjects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &563104362
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563104361}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: -0.73, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 819839618}
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!1 &811690033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,7 +1625,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1438956724}
-  - {fileID: 563104362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &884020638
@@ -2458,6 +2458,7 @@ GameObject:
   - component: {fileID: 1491302725}
   - component: {fileID: 1491302724}
   - component: {fileID: 1491302723}
+  - component: {fileID: 1491302727}
   m_Layer: 0
   m_Name: SownObject
   m_TagString: Untagged
@@ -2559,6 +2560,21 @@ Transform:
   - {fileID: 1595362692}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+--- !u!114 &1491302727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491302722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ec2afaf0bcc3d418a214a3f12035f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceFromCamera: 10
+  _offset: {x: 0, y: 0, z: 0}
+  _useRotation: 0
 --- !u!1 &1541347453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,7 +3205,6 @@ MonoBehaviour:
   - {r: 0, g: 0.09705353, b: 1, a: 1}
   _textTurn: {fileID: 551013512}
   _textPhase: {fileID: 1906255186}
-  _cameraParent: {fileID: 563104362}
   _textNameObject: {fileID: 468180888}
   _panelToShowName: {fileID: 112820278}
   _effectAudio: {fileID: 8300000, guid: ce33112bfc2035f4c9459076ba4b88aa, type: 3}

@@ -19,7 +19,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private Color[] _colorsTurn;
     [SerializeField] private TextMeshProUGUI _textTurn;
     [SerializeField] private TextMeshProUGUI _textPhase;
-    [SerializeField] private Transform _cameraParent;
 
     [FormerlySerializedAs("_nameObject")]
     [Header("Part of panel to show name")] 
@@ -82,8 +81,6 @@ public class GameController : MonoBehaviour
                 AddFirstOrLastPosInList(collectObj, list, false);
             }
             
-            Debug.Log($"Pieza recolectada (turno {_currentTurn + 1}): {list.Count}/{amountSpawn}");
-
             if (list.Count >= amountSpawn)
             {
                 NextCollectingTurn();
@@ -135,7 +132,6 @@ public class GameController : MonoBehaviour
 
         if (_partsCollectedPlayers[_currentTurn].PrefabsParts.Count == 0)
         {
-            Debug.Log($"[Arrange] Jugador {_currentTurn + 1} completó su turno");
             NextArrangingTurn();
             return;
         }
@@ -166,7 +162,6 @@ public class GameController : MonoBehaviour
                 StartArrangingTurn();
                 break;
             case Phase.Finished:
-                Debug.Log("Juego terminado");
                 EndGame();
                 break;
         }
@@ -180,12 +175,10 @@ public class GameController : MonoBehaviour
             _textPhase.text = "Fase de recolección";
             _textTurn.color = _colorsTurn[_currentTurn];
             _textTurn.text = "Turno " + (_currentTurn + 1);
-            Debug.Log($"[Collect] turno {_currentTurn + 1}");
             SpawnSeedsController.Instance.GeneratePartsAround(_partsToSpawn[_currentTurn].PrefabsParts);
         }
         else
         {
-            Debug.Log("primer fase completa");
             _currentTurn = 0;
             CurrentPhase = Phase.Arranging;
             StartPhase();
@@ -199,13 +192,11 @@ public class GameController : MonoBehaviour
             _textPhase.text = "Fase de armado";
             _textTurn.color = _colorsTurn[_currentTurn];
             _textTurn.text = "Turno " + (_currentTurn + 1);
-            Debug.Log($"[Armado] turno {_currentTurn + 1}");
             _baseGuides[_currentTurn].SetActive(true);
             StartCoroutine(EnableGuidesArranging());
         }
         else
         {
-            Debug.Log("segunda fase completa");
             _currentTurn = 0;
             CurrentPhase = Phase.Finished;
             StartPhase();
@@ -214,7 +205,7 @@ public class GameController : MonoBehaviour
 
     private void SetNewTransform(GameObject objectToDrag)
     {
-        objectToDrag.transform.parent = _cameraParent;
+        objectToDrag.GetComponent<FollowCamera>().enabled = true;
         var posTemp = objectToDrag.transform.localPosition;
         posTemp.x = 0;
         posTemp.y = 0;

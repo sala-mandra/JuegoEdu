@@ -32,6 +32,7 @@ public class SeedController : MonoBehaviour
     {
         if (GameController.Instance.CurrentPhase == Phase.Collecting)
         {
+            GameController.Instance.ShowNameObject(_nameObject);
             if (_coroutineCollect == null)
             {
                 _coroutineCollect = StartCoroutine(StartCollect());
@@ -40,8 +41,8 @@ public class SeedController : MonoBehaviour
         else if (GameController.Instance.CurrentPhase == Phase.Arranging)
         {
             _isDragging = true;
+            GetComponent<FollowCamera>().enabled = false;
         }
-        GameController.Instance.ShowNameObject(_nameObject);
     }
 
     private void OnMouseDrag()
@@ -60,11 +61,16 @@ public class SeedController : MonoBehaviour
     private void OnMouseUp()
     {
         _isDragging = false;
+        if (GameController.Instance.CurrentPhase == Phase.Arranging)
+        {
+            GetComponent<FollowCamera>().enabled = true;
+        }
         if (_overTarget)
         {
             if (_currentBaseGuideSelected.CheckObjectDrop(TypeObjectDrag))
             {
                 var transformBaseTemp = _currentBaseGuideSelected.transform;
+                GetComponent<FollowCamera>().enabled = false;
                 StartCoroutine(MoveToTarget(transformBaseTemp));
                 _overTarget = false;
                 GameController.Instance.EnableNextDragObject();

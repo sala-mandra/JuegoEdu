@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 3130357826131602305}
   - component: {fileID: 1800819600596308516}
   - component: {fileID: -7423869586217706260}
+  - component: {fileID: 4483303880638089456}
   m_Layer: 0
   m_Name: Shovel
   m_TagString: Untagged
@@ -217,3 +218,18 @@ MonoBehaviour:
   _layerBaseGuide:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &4483303880638089456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628435124548856327}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ec2afaf0bcc3d418a214a3f12035f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceFromCamera: 1.5
+  _offset: {x: 0, y: -0.35, z: 0}
+  _useRotation: 1
