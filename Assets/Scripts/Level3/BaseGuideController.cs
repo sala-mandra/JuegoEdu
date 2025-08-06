@@ -21,4 +21,9 @@ public class BaseGuideController : MonoBehaviour
             return false;
         }
     }
+
+    public TypeObject GetTypePlant()
+    {
+        return _objectBase;
+    }
 }

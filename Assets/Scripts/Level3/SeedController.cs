@@ -6,6 +6,9 @@ public class SeedController : MonoBehaviour
     public TypeObject TypeObjectDrag;
 
     [SerializeField] private string _nameObject;
+    [SerializeField] private string _nameTwoObject;
+    [SerializeField] private string _descriptionObject;
+    [SerializeField] private Sprite _backgroundObject;
     [SerializeField] private float _speedAnimation;
     [SerializeField] private float _minDistance = 0.5f;
     [SerializeField] private LayerMask _layerBaseGuide;
@@ -32,7 +35,7 @@ public class SeedController : MonoBehaviour
     {
         if (GameController.Instance.CurrentPhase == Phase.Collecting)
         {
-            GameController.Instance.ShowNameObject(_nameObject);
+            GameController.Instance.ShowNameObject(_nameObject, _nameTwoObject, _descriptionObject, _backgroundObject);
             if (_coroutineCollect == null)
             {
                 _coroutineCollect = StartCoroutine(StartCollect());
@@ -140,7 +143,7 @@ public class SeedController : MonoBehaviour
         {
             GameController.Instance.EnableAnimationPlantedPlants();
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }

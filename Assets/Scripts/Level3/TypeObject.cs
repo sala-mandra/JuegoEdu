@@ -1,6 +1,11 @@
 ﻿public enum TypeObject
 {
     Shovel,
-    Seed,
-    Water
+    Water,
+    Onion,
+    Ulluco,
+    Corn,
+    Potato,
+    Garlic,
+    Bean
 }

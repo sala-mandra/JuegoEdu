@@ -4,25 +4,30 @@ using UnityEngine;
 using System.Collections;
 using System.Linq;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
     public Phase CurrentPhase = Phase.Collecting;
-    
-    [Header("Part for work in logic")]
+
+    [Header("Part for work in logic")] 
+    [SerializeField] private float _percentageLessScale = 0.7f;
     [SerializeField] List<ObjectsToSpawn> _partsToSpawn;
     [SerializeField] List<ObjectsToSpawn> _partsCollectedPlayers;
     [SerializeField] private GameObject[] _baseGuides;
     [SerializeField] private GameObject[] _plantedPlants;
-    [SerializeField] private GameObject[] _zoneSown;
+    [SerializeField] List<ObjectsToSpawn> _zonesForSown;
     [SerializeField] private Color[] _colorsTurn;
+    [SerializeField] private TypeObject[] _orderPlants;
     [SerializeField] private TextMeshProUGUI _textTurn;
     [SerializeField] private TextMeshProUGUI _textPhase;
 
     [FormerlySerializedAs("_nameObject")]
     [Header("Part of panel to show name")] 
     [SerializeField] private TextMeshProUGUI _textNameObject;
+    [SerializeField] private TextMeshProUGUI _textNameTwoObject;
+    [SerializeField] private TextMeshProUGUI _textDescription;
     [SerializeField] private GameObject _panelToShowName;
     [SerializeField] private AudioClip _effectAudio;
     [SerializeField] private AudioSource _audioSource;
@@ -44,9 +49,12 @@ public class GameController : MonoBehaviour
         StartPhase();
     }
 
-    public void ShowNameObject(string name)
+    public void ShowNameObject(string name, string nameTwo, string textDescription, Sprite background)
     {
         _textNameObject.text = name;
+        _textNameTwoObject.text = nameTwo;
+        _textDescription.text = textDescription;
+        _panelToShowName.GetComponent<Image>().sprite = background;
         _audioSource.PlayOneShot(_effectAudio);
         StartCoroutine(ShowNameTemporaly());
     }
@@ -54,7 +62,7 @@ public class GameController : MonoBehaviour
     private IEnumerator ShowNameTemporaly()
     {
         _panelToShowName.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         _panelToShowName.SetActive(false);
     }
 
@@ -145,9 +153,27 @@ public class GameController : MonoBehaviour
 
     public void EnableAnimationPlantedPlants()
     {
-        foreach (var plant in _plantedPlants)
+        StartCoroutine(StartAnimationPlants());
+    }
+
+    private IEnumerator StartAnimationPlants()
+    {
+        foreach (var plant in _orderPlants)
         {
-            plant.SetActive(true);
+            for (var i = 0; i < _plantedPlants.Length; i++)
+            {
+                var currentPlant = _plantedPlants[i].GetComponent<BaseGuideController>().GetTypePlant();
+                if (currentPlant == plant)
+                {
+                    _plantedPlants[i].SetActive(true);
+                }
+                else
+                {
+                    continue;
+                }
+
+                yield return new WaitForSeconds(1);
+            }
         }
     }
 
@@ -206,11 +232,6 @@ public class GameController : MonoBehaviour
     private void SetNewTransform(GameObject objectToDrag)
     {
         objectToDrag.GetComponent<FollowCamera>().enabled = true;
-        var posTemp = objectToDrag.transform.localPosition;
-        posTemp.x = 0;
-        posTemp.y = 0;
-        posTemp.z = 0;
-        objectToDrag.transform.localPosition = posTemp;
 
         var newRotation = objectToDrag.transform.localRotation;
         newRotation.x = 0;
@@ -218,11 +239,7 @@ public class GameController : MonoBehaviour
         newRotation.z = 0;
         objectToDrag.transform.localRotation = newRotation;
 
-        var newScale = objectToDrag.transform.localScale;
-        newScale.x -= 0.8f;
-        newScale.y -= 0.8f;
-        newScale.z -= 0.8f;
-        objectToDrag.transform.localScale = newScale;
+        objectToDrag.transform.localScale *= _percentageLessScale;
     }
 
     private IEnumerator StartAnimationTextTurn()
@@ -235,7 +252,7 @@ public class GameController : MonoBehaviour
     private IEnumerator EnableGuidesArranging()
     {
         yield return new WaitForSeconds(2f);
-        foreach (var zone in _zoneSown)
+        foreach (var zone in _zonesForSown[_currentTurn].PrefabsParts)
         {
             zone.SetActive(true);
         }

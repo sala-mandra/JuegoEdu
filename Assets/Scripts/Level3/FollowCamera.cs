@@ -5,6 +5,7 @@ public class FollowCamera : MonoBehaviour
     [SerializeField] private float _distanceFromCamera = 2.5f;
     [SerializeField] private Vector3 _offset = Vector3.zero;
     [SerializeField] private bool _useRotation;
+    [SerializeField] private Vector3 _rotationOffSet = Vector3.zero;
     
     private Transform _cameraTransform;
 
@@ -22,9 +23,9 @@ public class FollowCamera : MonoBehaviour
 
         if (_useRotation)
         {
-            var cameraEuler = _cameraTransform.eulerAngles;
-            var targetRotation = Quaternion.Euler(cameraEuler.x, cameraEuler.y, 90f);
-            transform.rotation = targetRotation;
+            var baseRotation = _cameraTransform.rotation;
+            var offsetRotation = Quaternion.Euler(_rotationOffSet);
+            transform.rotation = baseRotation * offsetRotation;
         }
     }
 }

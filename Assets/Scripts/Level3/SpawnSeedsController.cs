@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,6 +9,7 @@ public class SpawnSeedsController : MonoBehaviour
     [SerializeField] private Transform _playerPosition;
     
     [SerializeField] private float _radiusSpawn;
+    [SerializeField] private float _minDistanceOfPlayer;
 
     private void Awake()
     {
@@ -21,17 +21,22 @@ public class SpawnSeedsController : MonoBehaviour
 
     public void GeneratePartsAround(List<GameObject> partsOfSpawn)
     {
-        //var amountParts = GameController.Instance.AmountSpawn;
         var amountParts = partsOfSpawn.Count;
         if (partsOfSpawn.Count > 0)
         {
             for (var i = 0; i < amountParts; i++)
             {
                 var prefabSeed = partsOfSpawn[i];
-                var offset2d = Random.insideUnitCircle * _radiusSpawn;
-                var offset = new Vector3(offset2d.x, 0, offset2d.y);
+                Vector3 offSet;
 
-                var seedTemp = Instantiate(prefabSeed, transform.position + offset, prefabSeed.transform.rotation);
+                do
+                {
+                    var offset2d = Random.insideUnitCircle * _radiusSpawn;
+                    offSet = new Vector3(offset2d.x, 0, offset2d.y);
+                    
+                } while (offSet.magnitude < _minDistanceOfPlayer);
+
+                var seedTemp = Instantiate(prefabSeed, transform.position + offSet, prefabSeed.transform.rotation);
             }
         }
         else
