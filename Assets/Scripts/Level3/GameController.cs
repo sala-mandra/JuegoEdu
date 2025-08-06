@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
     private IEnumerator ShowNameTemporaly()
     {
         _panelToShowName.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         _panelToShowName.SetActive(false);
     }
 
