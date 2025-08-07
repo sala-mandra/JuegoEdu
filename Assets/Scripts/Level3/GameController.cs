@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 using System.Linq;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class GameController : MonoBehaviour
     public Phase CurrentPhase = Phase.Collecting;
 
     [Header("Part for work in logic")] 
+    [SerializeField] private SOLevelSpiral _soLevelSpiral;
     [SerializeField] private float _percentageLessScale = 0.7f;
     [SerializeField] List<ObjectsToSpawn> _partsToSpawn;
     [SerializeField] List<ObjectsToSpawn> _partsCollectedPlayers;
@@ -268,5 +270,11 @@ public class GameController : MonoBehaviour
     private void EndGame()
     {
         Debug.Log("Ya ha terminado el juego");
+        if (_soLevelSpiral.Level < _soLevelSpiral.MaxLevel)
+        {
+            _soLevelSpiral.Level++;
+        }
+
+        SceneManager.LoadScene("Levels");
     }
 }

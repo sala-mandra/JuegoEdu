@@ -5,6 +5,10 @@ using UnityEngine.UI;
 public class GameControllerLevel1 : MonoBehaviour
 {
     public static GameControllerLevel1 Instance;
+
+    [Header("Objects for level 1 enable")] 
+    [SerializeField] private GameObject _panelForLevelOne;
+    [SerializeField] private GameObject _panelMenuSpiral;
     
     [SerializeField] private GameObject _panelDescription;
     [SerializeField] private TextMeshProUGUI _textNameObject;
@@ -50,6 +54,14 @@ public class GameControllerLevel1 : MonoBehaviour
         if (_amountObjectsInScene >= _TotalNumberObjects)
         {
             Debug.Log("Encontro todos los objetos, se termino el juego");
+            CompleteLevel();
         }
+    }
+    
+    private void CompleteLevel()
+    {
+        SpiralController.Instance.LevelComplete();
+        _panelForLevelOne.SetActive(false);
+        _panelMenuSpiral.SetActive(true);
     }
 }

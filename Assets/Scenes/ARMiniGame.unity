@@ -3697,6 +3697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentPhase: 0
+  _soLevelSpiral: {fileID: 11400000, guid: 11f7e85c1315f3d409fd792c6ad93792, type: 2}
   _percentageLessScale: 0.2
   _partsToSpawn:
   - PrefabsParts:
