@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5731136860534316455
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      propertyPath: m_Name
+      value: Onion
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5591956016270542477}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8017250324776809550}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7693832652797166003}
+  m_SourcePrefab: {fileID: 100100000, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+--- !u!1 &4848264971836367094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 15e9a9b133a98884bbc1b2c2a083d955, type: 3}
+  m_PrefabInstance: {fileID: 5731136860534316455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &5591956016270542477
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848264971836367094}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6.6513686
+  m_Height: 29.767548
+  m_Direction: 2
+  m_Center: {x: -1.6448128, y: -1.325358, z: 14.97306}
+--- !u!114 &8017250324776809550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848264971836367094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93c23a8edaeaf342b6ff184d2995927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeObjectDrag: 2
+  _nameObject: sepulla
+  _nameTwoObject: Cebolla
+  _descriptionObject: "\u201Csepulla tuk, wam \xF1aup\u201D \u2013\u201CLa cebolla
+    hila caminos\u201D \u2013, sus tantas capas, simbolizan los senderos que unen
+    casa, huerta y laguna."
+  _backgroundObject: {fileID: 21300000, guid: 95f98153722edf940bf53847cbae7a63, type: 3}
+  _speedAnimation: 1.2
+  _minDistance: 0.5
+  _layerBaseGuide:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &7693832652797166003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4848264971836367094}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ec2afaf0bcc3d418a214a3f12035f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceFromCamera: 1.5
+  _offset: {x: 0, y: -0.6, z: 0}
+  _useRotation: 1
+  _rotationOffSet: {x: 0, y: 0, z: 0}

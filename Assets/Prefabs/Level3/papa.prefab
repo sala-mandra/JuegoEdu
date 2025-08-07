@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4642956750817243377
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.66
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      propertyPath: m_Name
+      value: papa
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1184749453499167079}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3336924221817460394}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8872278537631973528}
+  m_SourcePrefab: {fileID: 100100000, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+--- !u!1 &5525478318360202656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
+  m_PrefabInstance: {fileID: 4642956750817243377}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1184749453499167079
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525478318360202656}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14.079943, y: 7.753269, z: 8.595666}
+  m_Center: {x: -0.24919343, y: 18.493286, z: -0.094518185}
+--- !u!114 &3336924221817460394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525478318360202656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93c23a8edaeaf342b6ff184d2995927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeObjectDrag: 5
+  _nameObject: ye
+  _nameTwoObject: Papa
+  _descriptionObject: "La ye se guarda como tesoro porque un solo tub\xE9rculo puede
+    dar comida y semilla. Con la papa arranca la primera sopa del d\xEDa."
+  _backgroundObject: {fileID: 21300000, guid: 08948cd463ba0f643ba3e0aef8dd873d, type: 3}
+  _speedAnimation: 1.2
+  _minDistance: 0.5
+  _layerBaseGuide:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &8872278537631973528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525478318360202656}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ec2afaf0bcc3d418a214a3f12035f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceFromCamera: 1.5
+  _offset: {x: 0, y: -0.6, z: 0}
+  _useRotation: 1
+  _rotationOffSet: {x: 0, y: 0, z: 0}

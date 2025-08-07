@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &128279579099081862
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      propertyPath: m_Name
+      value: Shovel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7892560534823049836}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 918230050262535226}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3663310860202179485}
+  m_SourcePrefab: {fileID: 100100000, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+--- !u!1 &938670982823809495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 10e55bcb8d14f3d4b90e757d04c0a4fd, type: 3}
+  m_PrefabInstance: {fileID: 128279579099081862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7892560534823049836
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938670982823809495}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 28.788918, y: 14.253592, z: 131.09009}
+  m_Center: {x: 0, y: 0, z: -65.545044}
+--- !u!114 &918230050262535226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938670982823809495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93c23a8edaeaf342b6ff184d2995927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeObjectDrag: 0
+  _nameObject: pala
+  _nameTwoObject: Pala
+  _descriptionObject: "Alik pala, mayailai\u201D \u2013 \u201CLa pala colectiva,
+    hay para todos\u201D \u2013. La pala viaja de mano en mano durante la minga;
+    abre surcos y, al pasarla, se transmite fuerza y alegr\xEDa."
+  _backgroundObject: {fileID: 21300000, guid: 44441e47e193e514b90b0f96a31d1c5e, type: 3}
+  _speedAnimation: 1.2
+  _minDistance: 0.5
+  _layerBaseGuide:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &3663310860202179485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938670982823809495}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ec2afaf0bcc3d418a214a3f12035f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceFromCamera: 1.5
+  _offset: {x: 0, y: -0.5, z: 0}
+  _useRotation: 1
+  _rotationOffSet: {x: 0, y: 90, z: 0}
