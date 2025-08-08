@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef5c122bd702f794fba4c8f0641258e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -140,6 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distanceFromCamera: 1.5
-  _offset: {x: 0, y: -0.6, z: 0}
+  _offset: {x: 0, y: -0.5, z: 0}
   _useRotation: 1
   _rotationOffSet: {x: 0, y: 0, z: 0}

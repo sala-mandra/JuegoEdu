@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -21,7 +22,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject[] _plantedPlants;
     [SerializeField] List<ObjectsToSpawn> _zonesForSown;
     [SerializeField] private Color[] _colorsTurn;
-    [SerializeField] private TypeObject[] _orderPlants;
+    [SerializeField] private TypeObject[] _orderPlantsGrowth;
+    [SerializeField] private TypeObject[] _orderPlantsSownOne;
+    [SerializeField] private TypeObject[] _orderPlantsSownTwo;
     [SerializeField] private TextMeshProUGUI _textTurn;
     [SerializeField] private TextMeshProUGUI _textPhase;
 
@@ -37,6 +40,9 @@ public class GameController : MonoBehaviour
     private int _currentTurn;
     private int _totalPlayers => _partsToSpawn.Count;
     private int _currentCollected;
+    private int _currentBaseGuide;
+    private Coroutine _coroutineShowName;
+    
 
     private void Awake()
     {
@@ -58,7 +64,11 @@ public class GameController : MonoBehaviour
         _textDescription.text = textDescription;
         _panelToShowName.GetComponent<Image>().sprite = background;
         _audioSource.PlayOneShot(_effectAudio);
-        StartCoroutine(ShowNameTemporaly());
+        if (_coroutineShowName != null)
+        {
+            StopCoroutine(_coroutineShowName);
+        }
+        _coroutineShowName = StartCoroutine(ShowNameTemporaly());
     }
 
     private IEnumerator ShowNameTemporaly()
@@ -66,6 +76,7 @@ public class GameController : MonoBehaviour
         _panelToShowName.SetActive(true);
         yield return new WaitForSeconds(10f);
         _panelToShowName.SetActive(false);
+        _coroutineShowName = null;
     }
 
     public void AddCollectedPart(GameObject collectObj)
@@ -81,16 +92,7 @@ public class GameController : MonoBehaviour
         if (list.Count < amountSpawn)
         {
             list.Add(collectObj);
-            var currenType = collectObj.GetComponent<SeedController>().TypeObjectDrag;
-            if (currenType == TypeObject.Shovel)
-            {
-                AddFirstOrLastPosInList(collectObj, list, true);
-            }
-            else
-            {
-                AddFirstOrLastPosInList(collectObj, list, false);
-            }
-            
+            OrderListsToSow(list);
             if (list.Count >= amountSpawn)
             {
                 NextCollectingTurn();
@@ -98,34 +100,17 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void AddFirstOrLastPosInList(GameObject objectCollect, List<GameObject> listToAdd, bool first)
+    private void OrderListsToSow(List<GameObject> listTemp)
     {
-        if (first)
+        if (_currentTurn == 0)
         {
-            if (listToAdd[0] != null)
-            {
-                var objectTempInZeroPos = listToAdd[0];
-                var indexTemp = listToAdd.IndexOf(objectCollect);
-                listToAdd[0] = objectCollect;
-                listToAdd[indexTemp] = objectTempInZeroPos;
-            }
+            _partsCollectedPlayers[_currentTurn].PrefabsParts = listTemp.OrderBy(p => Array.IndexOf(_orderPlantsSownOne,
+                p.GetComponent<SeedController>().TypeObjectDrag)).ToList();
         }
         else
         {
-            var waterObject = listToAdd
-                .FirstOrDefault(obj => obj != null &&
-                    obj.GetComponent<SeedController>() != null &&
-                    obj.GetComponent<SeedController>().TypeObjectDrag == TypeObject.Water);
-
-            if (waterObject != null)
-            {
-                int waterIndex = listToAdd.IndexOf(waterObject);
-                if (waterIndex != listToAdd.Count - 1)
-                {
-                    listToAdd.RemoveAt(waterIndex);
-                    listToAdd.Add(waterObject);
-                }
-            }
+            _partsCollectedPlayers[_currentTurn].PrefabsParts =listTemp.OrderBy(p => Array.IndexOf(_orderPlantsSownTwo,
+                p.GetComponent<SeedController>().TypeObjectDrag)).ToList();
         }
     }
 
@@ -151,6 +136,7 @@ public class GameController : MonoBehaviour
         requiredPart.SetActive(true);
         
         _partsCollectedPlayers[_currentTurn].PrefabsParts.RemoveAt(0);
+        StartCoroutine(EnableGuidesArranging());
     }
 
     public void EnableAnimationPlantedPlants()
@@ -160,7 +146,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator StartAnimationPlants()
     {
-        foreach (var plant in _orderPlants)
+        foreach (var plant in _orderPlantsGrowth)
         {
             for (var i = 0; i < _plantedPlants.Length; i++)
             {
@@ -168,6 +154,7 @@ public class GameController : MonoBehaviour
                 if (currentPlant == plant)
                 {
                     _plantedPlants[i].SetActive(true);
+                    _plantedPlants[i].GetComponent<AnimationGrowthPlants>().AnimationGrowth();
                 }
                 else
                 {
@@ -177,6 +164,8 @@ public class GameController : MonoBehaviour
                 yield return new WaitForSeconds(1);
             }
         }
+        yield return new WaitForSeconds(2);
+        EndGame();
     }
 
     private void StartPhase()
@@ -190,7 +179,7 @@ public class GameController : MonoBehaviour
                 StartArrangingTurn();
                 break;
             case Phase.Finished:
-                EndGame();
+                Debug.Log("Termino interacciones");
                 break;
         }
         StartCoroutine(StartAnimationTextTurn());
@@ -220,8 +209,8 @@ public class GameController : MonoBehaviour
             _textPhase.text = "Fase de armado";
             _textTurn.color = _colorsTurn[_currentTurn];
             _textTurn.text = "Turno " + (_currentTurn + 1);
-            _baseGuides[_currentTurn].SetActive(true);
-            StartCoroutine(EnableGuidesArranging());
+            //_baseGuides[_currentTurn].SetActive(true);
+            EnableNextDragObject();
         }
         else
         {
@@ -253,12 +242,23 @@ public class GameController : MonoBehaviour
     
     private IEnumerator EnableGuidesArranging()
     {
-        yield return new WaitForSeconds(2f);
-        foreach (var zone in _zonesForSown[_currentTurn].PrefabsParts)
+        yield return new WaitForSeconds(1f);
+        if (_currentBaseGuide >= 0)
         {
-            zone.SetActive(true);
+            _zonesForSown[_currentTurn].PrefabsParts[_currentBaseGuide].SetActive(true);
+            if (_currentBaseGuide < _zonesForSown[_currentTurn].PrefabsParts.Count - 1)
+            {
+                _currentBaseGuide++;
+            }
+            else
+            {
+                _currentBaseGuide = 0;
+            }
         }
-        EnableNextDragObject();
+        // else
+        // {
+        //     _currentBaseGuide++;
+        // }
     }
     
     private void NextArrangingTurn()
