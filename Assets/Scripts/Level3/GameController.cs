@@ -160,11 +160,10 @@ public class GameController : MonoBehaviour
                 {
                     continue;
                 }
-
                 yield return new WaitForSeconds(1);
             }
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         EndGame();
     }
 
@@ -209,7 +208,6 @@ public class GameController : MonoBehaviour
             _textPhase.text = "Fase de armado";
             _textTurn.color = _colorsTurn[_currentTurn];
             _textTurn.text = "Turno " + (_currentTurn + 1);
-            //_baseGuides[_currentTurn].SetActive(true);
             EnableNextDragObject();
         }
         else
@@ -255,10 +253,6 @@ public class GameController : MonoBehaviour
                 _currentBaseGuide = 0;
             }
         }
-        // else
-        // {
-        //     _currentBaseGuide++;
-        // }
     }
     
     private void NextArrangingTurn()
