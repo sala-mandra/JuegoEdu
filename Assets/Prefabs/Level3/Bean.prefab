@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6102767199728697676, guid: 0d228eda96504c042b98a11658e5a3ca, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c6e61fcb83c46b408704c2ede0b37db, type: 2}
     - target: {fileID: -657790968750979073, guid: 0d228eda96504c042b98a11658e5a3ca, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -158,4 +162,4 @@ MonoBehaviour:
   _useScale: 1
   _offset: {x: -0.07, y: -0.15, z: -0.6}
   _rotationOffSet: {x: 90, y: 0, z: 0}
-  _scaleOffSet: {x: 0.13, y: 0.13, z: 0.13}
+  _scaleOffSet: {x: 0.08, y: 0.08, z: 0.08}

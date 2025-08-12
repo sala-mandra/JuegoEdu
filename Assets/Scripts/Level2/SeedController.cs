@@ -33,15 +33,15 @@ public class SeedController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (GameController.Instance.CurrentPhase == Phase.Collecting)
+        if (GameControllerLevel2.Instance.CurrentPhase == Phase.Collecting)
         {
-            GameController.Instance.ShowNameObject(_nameObject, _nameTwoObject, _descriptionObject, _backgroundObject);
+            GameControllerLevel2.Instance.ShowNameObject(_nameObject, _nameTwoObject, _descriptionObject, _backgroundObject);
             if (_coroutineCollect == null)
             {
                 _coroutineCollect = StartCoroutine(StartCollect());
             }
         }
-        else if (GameController.Instance.CurrentPhase == Phase.Arranging)
+        else if (GameControllerLevel2.Instance.CurrentPhase == Phase.Arranging)
         {
             _isDragging = true;
             GetComponent<FollowCamera>().enabled = false;
@@ -50,7 +50,7 @@ public class SeedController : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (GameController.Instance.CurrentPhase == Phase.Arranging)
+        if (GameControllerLevel2.Instance.CurrentPhase == Phase.Arranging)
         {
             if (_isDragging)
             {
@@ -64,7 +64,7 @@ public class SeedController : MonoBehaviour
     private void OnMouseUp()
     {
         _isDragging = false;
-        if (GameController.Instance.CurrentPhase == Phase.Arranging)
+        if (GameControllerLevel2.Instance.CurrentPhase == Phase.Arranging)
         {
             GetComponent<FollowCamera>().enabled = true;
         }
@@ -76,7 +76,7 @@ public class SeedController : MonoBehaviour
                 GetComponent<FollowCamera>().enabled = false;
                 StartCoroutine(MoveToTarget(transformBaseTemp));
                 _overTarget = false;
-                GameController.Instance.EnableNextDragObject();
+                GameControllerLevel2.Instance.StartCoroutineEnableNextDrag();
             }
         }
     }
@@ -94,7 +94,7 @@ public class SeedController : MonoBehaviour
             yield return null;
         }
         
-        GameController.Instance.AddCollectedPart(gameObject); 
+        GameControllerLevel2.Instance.AddCollectedPart(gameObject); 
         _coroutineCollect = null;
         gameObject.SetActive(false);
     }
@@ -141,7 +141,7 @@ public class SeedController : MonoBehaviour
         }
         if (TypeObjectDrag == TypeObject.Water)
         {
-            GameController.Instance.EnableAnimationPlantedPlants();
+            GameControllerLevel2.Instance.EnableAnimationPlantedPlants();
         }
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);

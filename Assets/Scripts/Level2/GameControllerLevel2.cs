@@ -5,30 +5,28 @@ using UnityEngine;
 using System.Collections;
 using System.Linq;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class GameController : MonoBehaviour
+public class GameControllerLevel2 : MonoBehaviour
 {
-    public static GameController Instance;
+    public static GameControllerLevel2 Instance;
     public Phase CurrentPhase = Phase.Collecting;
 
-    [Header("Part for work in logic")] 
-    [SerializeField] private SOLevelSpiral _soLevelSpiral;
+    [Header("Part for work in logic")] [SerializeField]
+    private SOLevelSpiral _soLevelSpiral;
+
     [SerializeField] private float _percentageLessScale = 0.7f;
     [SerializeField] List<ObjectsToSpawn> _partsToSpawn;
     [SerializeField] List<ObjectsToSpawn> _partsCollectedPlayers;
     [SerializeField] private GameObject[] _baseGuides;
     [SerializeField] private GameObject[] _plantedPlants;
     [SerializeField] List<ObjectsToSpawn> _zonesForSown;
-    [SerializeField] private Color[] _colorsTurn;
     [SerializeField] private TypeObject[] _orderPlantsGrowth;
     [SerializeField] private TypeObject[] _orderPlantsSownOne;
     [SerializeField] private TypeObject[] _orderPlantsSownTwo;
-    [SerializeField] private TextMeshProUGUI _textTurn;
-    [SerializeField] private TextMeshProUGUI _textPhase;
+    [SerializeField] private GameObject[] _imageTextPhase;
+    [SerializeField] private List<ObjectsToSpawn> _imageTextTurn;
 
-    [FormerlySerializedAs("_nameObject")]
     [Header("Part of panel to show name")] 
     [SerializeField] private TextMeshProUGUI _textNameObject;
     [SerializeField] private TextMeshProUGUI _textNameTwoObject;
@@ -36,13 +34,17 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject _panelToShowName;
     [SerializeField] private AudioClip _effectAudio;
     [SerializeField] private AudioSource _audioSource;
-    
+
+    [Header("Panels to intro")] 
+    [SerializeField] private GameObject _panelFinal;
+
     private int _currentTurn;
     private int _totalPlayers => _partsToSpawn.Count;
     private int _currentCollected;
     private int _currentBaseGuide;
     private Coroutine _coroutineShowName;
-    
+    private bool _showTextTurn;
+
 
     private void Awake()
     {
@@ -52,9 +54,9 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void StartGame()
     {
-        StartPhase();
+        StartCoroutine(StartPhase());
     }
 
     public void ShowNameObject(string name, string nameTwo, string textDescription, Sprite background)
@@ -73,9 +75,11 @@ public class GameController : MonoBehaviour
 
     private IEnumerator ShowNameTemporaly()
     {
+        _showTextTurn = true;
         _panelToShowName.SetActive(true);
         yield return new WaitForSeconds(10f);
         _panelToShowName.SetActive(false);
+        _showTextTurn = false;
         _coroutineShowName = null;
     }
 
@@ -87,8 +91,8 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        var amountSpawn = _partsToSpawn[_currentTurn].PrefabsParts.Count;
-        var list = _partsCollectedPlayers[_currentTurn].PrefabsParts;
+        var amountSpawn = _partsToSpawn[_currentTurn].ObjectsToUse.Count;
+        var list = _partsCollectedPlayers[_currentTurn].ObjectsToUse;
         if (list.Count < amountSpawn)
         {
             list.Add(collectObj);
@@ -104,12 +108,12 @@ public class GameController : MonoBehaviour
     {
         if (_currentTurn == 0)
         {
-            _partsCollectedPlayers[_currentTurn].PrefabsParts = listTemp.OrderBy(p => Array.IndexOf(_orderPlantsSownOne,
+            _partsCollectedPlayers[_currentTurn].ObjectsToUse = listTemp.OrderBy(p => Array.IndexOf(_orderPlantsSownOne,
                 p.GetComponent<SeedController>().TypeObjectDrag)).ToList();
         }
         else
         {
-            _partsCollectedPlayers[_currentTurn].PrefabsParts =listTemp.OrderBy(p => Array.IndexOf(_orderPlantsSownTwo,
+            _partsCollectedPlayers[_currentTurn].ObjectsToUse =listTemp.OrderBy(p => Array.IndexOf(_orderPlantsSownTwo,
                 p.GetComponent<SeedController>().TypeObjectDrag)).ToList();
         }
     }
@@ -117,25 +121,30 @@ public class GameController : MonoBehaviour
     private void NextCollectingTurn()
     {
         _currentTurn++;
-        StartPhase();
+        StartCoroutine(StartPhase());
+    }
+
+    public void StartCoroutineEnableNextDrag()
+    {
+        StartCoroutine(EnableNextDragObject());
     }
     
-    public void EnableNextDragObject()
+    private IEnumerator EnableNextDragObject()
     {
         if (CurrentPhase != Phase.Arranging)
-            return;
+            yield break;
 
-        if (_partsCollectedPlayers[_currentTurn].PrefabsParts.Count == 0)
+        if (_partsCollectedPlayers[_currentTurn].ObjectsToUse.Count == 0)
         {
             NextArrangingTurn();
-            return;
+            yield break;
         }
         
-        var requiredPart = _partsCollectedPlayers[_currentTurn].PrefabsParts[_currentCollected];
+        var requiredPart = _partsCollectedPlayers[_currentTurn].ObjectsToUse[_currentCollected];
         SetNewTransform(requiredPart);        
         requiredPart.SetActive(true);
         
-        _partsCollectedPlayers[_currentTurn].PrefabsParts.RemoveAt(0);
+        _partsCollectedPlayers[_currentTurn].ObjectsToUse.RemoveAt(0);
         StartCoroutine(EnableGuidesArranging());
     }
 
@@ -163,58 +172,60 @@ public class GameController : MonoBehaviour
                 yield return new WaitForSeconds(1);
             }
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2.5f);
         EndGame();
     }
 
-    private void StartPhase()
+    private IEnumerator StartPhase()
     {
+        yield return new WaitUntil(() => !_showTextTurn);
         switch (CurrentPhase)
         {
             case Phase.Collecting:
-                StartCollectingTurn();
+                yield return StartCoroutine(StartCollectingTurn());
                 break;
             case Phase.Arranging:
-                StartArrangingTurn();
+                yield return StartCoroutine(StartArrangingTurn());
                 break;
             case Phase.Finished:
                 Debug.Log("Termino interacciones");
                 break;
         }
-        StartCoroutine(StartAnimationTextTurn());
     }
 
-    private void StartCollectingTurn()
+    private IEnumerator StartCollectingTurn()
     {
         if (_currentTurn < _totalPlayers)
         {
-            _textPhase.text = "Fase de recolección";
-            _textTurn.color = _colorsTurn[_currentTurn];
-            _textTurn.text = "Turno " + (_currentTurn + 1);
-            SpawnSeedsController.Instance.GeneratePartsAround(_partsToSpawn[_currentTurn].PrefabsParts);
+            if (_currentTurn == 0)
+            {
+                yield return StartCoroutine(StartPhaseAnimation(_imageTextPhase[GetPhaseIndex()]));
+            }
+            SpawnSeedsController.Instance.GeneratePartsAround(_partsToSpawn[_currentTurn].ObjectsToUse);
         }
         else
         {
             _currentTurn = 0;
             CurrentPhase = Phase.Arranging;
-            StartPhase();
+            yield return StartCoroutine(StartPhase());
         }
     }
 
-    private void StartArrangingTurn()
+    private IEnumerator StartArrangingTurn()
     {
         if (_currentTurn < _totalPlayers)
         {
-            _textPhase.text = "Fase de armado";
-            _textTurn.color = _colorsTurn[_currentTurn];
-            _textTurn.text = "Turno " + (_currentTurn + 1);
-            EnableNextDragObject();
+            if (_currentTurn == 0)
+            {
+                yield return StartCoroutine(StartPhaseAnimation(_imageTextPhase[GetPhaseIndex()]));
+            }
+            yield return StartCoroutine(EnableNextDragObject());
         }
         else
         {
             _currentTurn = 0;
             CurrentPhase = Phase.Finished;
-            StartPhase();
+            yield return StartCoroutine(StartPhase());
         }
     }
 
@@ -231,11 +242,20 @@ public class GameController : MonoBehaviour
         objectToDrag.transform.localScale *= _percentageLessScale;
     }
 
-    private IEnumerator StartAnimationTextTurn()
+    private IEnumerator StartPhaseAnimation(GameObject imagePhase)
     {
-        _textTurn.gameObject.SetActive(true);
+        imagePhase.SetActive(true);
+        yield return new WaitForSeconds(3);
+        imagePhase.SetActive(false);
+        var turnTemp = _imageTextTurn[GetPhaseIndex()].ObjectsToUse[_currentTurn];
+        yield return StartCoroutine(StartAnimationTextTurn(turnTemp));
+    }
+
+    private IEnumerator StartAnimationTextTurn(GameObject currentTurnImage)
+    {
+        currentTurnImage.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
-        _textTurn.gameObject.SetActive(false);
+        currentTurnImage.gameObject.SetActive(false);
     }
     
     private IEnumerator EnableGuidesArranging()
@@ -243,8 +263,8 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (_currentBaseGuide >= 0)
         {
-            _zonesForSown[_currentTurn].PrefabsParts[_currentBaseGuide].SetActive(true);
-            if (_currentBaseGuide < _zonesForSown[_currentTurn].PrefabsParts.Count - 1)
+            _zonesForSown[_currentTurn].ObjectsToUse[_currentBaseGuide].SetActive(true);
+            if (_currentBaseGuide < _zonesForSown[_currentTurn].ObjectsToUse.Count - 1)
             {
                 _currentBaseGuide++;
             }
@@ -258,7 +278,7 @@ public class GameController : MonoBehaviour
     private void NextArrangingTurn()
     {
         _currentTurn++;
-        StartPhase();
+        StartCoroutine(StartPhase());
     }
     
     private void EndGame()
@@ -268,7 +288,17 @@ public class GameController : MonoBehaviour
         {
             _soLevelSpiral.Level++;
         }
+        _panelFinal.SetActive(true);
+    }
+    
+    private int GetPhaseIndex()
+    {
+        return CurrentPhase == Phase.Collecting ? 0 :
+            CurrentPhase == Phase.Arranging ? 1 : -1;
+    }
 
+    public void ReturnToHome()
+    {
         SceneManager.LoadScene("Levels");
     }
 }

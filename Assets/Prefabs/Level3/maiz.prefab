@@ -143,6 +143,6 @@ MonoBehaviour:
   _distanceFromCamera: 1.5
   _useRotation: 1
   _useScale: 1
-  _offset: {x: 0.26, y: -0.25, z: -0.4}
+  _offset: {x: 0.26, y: -0.3, z: -0.4}
   _rotationOffSet: {x: 0, y: 0, z: 0}
-  _scaleOffSet: {x: 0.11, y: 0.11, z: 0.11}
+  _scaleOffSet: {x: 0.08, y: 0.08, z: 0.08}

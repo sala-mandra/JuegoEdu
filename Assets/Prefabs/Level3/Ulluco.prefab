@@ -144,5 +144,5 @@ MonoBehaviour:
   _useRotation: 1
   _useScale: 1
   _offset: {x: 0.06, y: -0.3, z: -0.3}
-  _rotationOffSet: {x: 0, y: 0, z: 0}
+  _rotationOffSet: {x: -0.8, y: 0, z: 90}
   _scaleOffSet: {x: 0.07, y: 0.07, z: 0.07}
