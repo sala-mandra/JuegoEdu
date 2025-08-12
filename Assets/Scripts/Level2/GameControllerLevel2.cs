@@ -197,10 +197,8 @@ public class GameControllerLevel2 : MonoBehaviour
     {
         if (_currentTurn < _totalPlayers)
         {
-            if (_currentTurn == 0)
-            {
-                yield return StartCoroutine(StartPhaseAnimation(_imageTextPhase[GetPhaseIndex()]));
-            }
+            
+            yield return StartCoroutine(StartPhaseAnimation(_imageTextPhase[GetPhaseIndex()]));
             SpawnSeedsController.Instance.GeneratePartsAround(_partsToSpawn[_currentTurn].ObjectsToUse);
         }
         else
@@ -215,10 +213,7 @@ public class GameControllerLevel2 : MonoBehaviour
     {
         if (_currentTurn < _totalPlayers)
         {
-            if (_currentTurn == 0)
-            {
-                yield return StartCoroutine(StartPhaseAnimation(_imageTextPhase[GetPhaseIndex()]));
-            }
+            yield return StartCoroutine(StartPhaseAnimation(_imageTextPhase[GetPhaseIndex()]));
             yield return StartCoroutine(EnableNextDragObject());
         }
         else
@@ -244,9 +239,12 @@ public class GameControllerLevel2 : MonoBehaviour
 
     private IEnumerator StartPhaseAnimation(GameObject imagePhase)
     {
-        imagePhase.SetActive(true);
-        yield return new WaitForSeconds(3);
-        imagePhase.SetActive(false);
+        if (_currentTurn == 0)
+        {
+            imagePhase.SetActive(true);
+            yield return new WaitForSeconds(3);
+            imagePhase.SetActive(false);
+        }
         var turnTemp = _imageTextTurn[GetPhaseIndex()].ObjectsToUse[_currentTurn];
         yield return StartCoroutine(StartAnimationTextTurn(turnTemp));
     }
