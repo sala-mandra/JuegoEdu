@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameControllerLevel1 : MonoBehaviour
@@ -12,11 +14,13 @@ public class GameControllerLevel1 : MonoBehaviour
     
     [SerializeField] private GameObject _panelDescription;
     [SerializeField] private TextMeshProUGUI _textNameObject;
+    [SerializeField] private TextMeshProUGUI _textSecondNameObject;
     [SerializeField] private TextMeshProUGUI _textDescription;
-    [SerializeField] private Image _imageOfObjectSelected;
+    [SerializeField] private Image _imageBackgroundDescription;
     [SerializeField] private AudioClip _effectSound;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private int _TotalNumberObjects = 5;
+    [SerializeField] private GameObject _panelFinalGame;
 
     private AudioClip _currentAudioNameObject;
     private int _amountObjectsInScene;
@@ -29,14 +33,20 @@ public class GameControllerLevel1 : MonoBehaviour
         }
     }
 
-    public void ShowPanelDescription(string textToName, AudioClip audioName, Sprite imageObject, string description)
+    public void ShowPanelDescription(string textToName, string textSecondName, AudioClip audioName, Sprite imageObject, string description)
     {
-        _imageOfObjectSelected.sprite = imageObject;
+        _imageBackgroundDescription.sprite = imageObject;
         _currentAudioNameObject = audioName;
         _textNameObject.text = textToName;
+        _textSecondNameObject.text = textSecondName;
         _textDescription.text = description;
         _panelDescription.SetActive(true);
-        CountFindedObjects();
+        _amountObjectsInScene++;
+    }
+
+    public void LoadLevel(string nameLevel)
+    {
+        SceneManager.LoadScene(nameLevel);
     }
 
     public void PlayEffectSound()
@@ -49,16 +59,16 @@ public class GameControllerLevel1 : MonoBehaviour
         _audioSource.PlayOneShot(_currentAudioNameObject);
     }
 
-    private void CountFindedObjects()
+    public void CountFindedObjects()
     {
         if (_amountObjectsInScene >= _TotalNumberObjects)
         {
             Debug.Log("Encontro todos los objetos, se termino el juego");
-            CompleteLevel();
+            _panelFinalGame.SetActive(true);
         }
     }
     
-    private void CompleteLevel()
+    public void CompleteLevel()
     {
         SpiralController.Instance.LevelComplete();
         _panelForLevelOne.SetActive(false);

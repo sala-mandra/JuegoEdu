@@ -297,6 +297,6 @@ public class GameControllerLevel2 : MonoBehaviour
 
     public void ReturnToHome()
     {
-        SceneManager.LoadScene("Levels");
+        SceneManager.LoadScene("MenuAndLevel1");
     }
 }

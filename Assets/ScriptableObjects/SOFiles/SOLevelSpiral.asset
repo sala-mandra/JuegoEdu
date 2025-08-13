@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SOLevelSpiral
   m_EditorClassIdentifier: 
   Level: 0
-  MaxLevel: 4
+  MaxLevel: 0

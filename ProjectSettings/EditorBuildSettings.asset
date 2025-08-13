@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ARMiniGame.unity
+    path: Assets/Scenes/ARLevel2.unity
     guid: 2c93821f343e11745bafd53bc4e65fbc
   - enabled: 1
-    path: Assets/Scenes/Levels.unity
+    path: Assets/Scenes/MenuAndLevel1.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4f9810f7fa725a4458aaf1bd05159e17, type: 2}
