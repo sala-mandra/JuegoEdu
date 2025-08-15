@@ -1,13 +1,15 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameControllerLevel1 : MonoBehaviour
 {
     public static GameControllerLevel1 Instance;
 
+    [SerializeField] private SOLevelSpiral _soLevelSpiral;
+    
     [Header("Objects for level 1 enable")] 
     [SerializeField] private GameObject _panelForLevelOne;
     [SerializeField] private GameObject _panelMenuSpiral;
@@ -18,12 +20,12 @@ public class GameControllerLevel1 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textDescription;
     [SerializeField] private Image _imageBackgroundDescription;
     [SerializeField] private AudioClip _effectSound;
-    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSourceLevel1;
     [SerializeField] private int _TotalNumberObjects = 5;
     [SerializeField] private GameObject _panelFinalGame;
 
     private AudioClip _currentAudioNameObject;
-    private int _amountObjectsInScene;
+    private List<IDDesiredObject> _foundObjectsList = new List<IDDesiredObject>();
     
     private void Awake()
     {
@@ -33,15 +35,20 @@ public class GameControllerLevel1 : MonoBehaviour
         }
     }
 
-    public void ShowPanelDescription(string textToName, string textSecondName, AudioClip audioName, Sprite imageObject, string description)
+    public void RestartLevelOne()
     {
-        _imageBackgroundDescription.sprite = imageObject;
-        _currentAudioNameObject = audioName;
-        _textNameObject.text = textToName;
-        _textSecondNameObject.text = textSecondName;
-        _textDescription.text = description;
+        _foundObjectsList.Clear();
+    }
+
+    public void ShowPanelDescription(DataWantedObject dataObject)
+    {
+        _imageBackgroundDescription.sprite = dataObject.ImageOfObject;
+        _currentAudioNameObject = dataObject.ClipNameObject;
+        _textNameObject.text = dataObject.NameObject;
+        _textSecondNameObject.text = dataObject.SecondNameObject;
+        _textDescription.text = dataObject.DescriptionObject;
         _panelDescription.SetActive(true);
-        _amountObjectsInScene++;
+        CheckListObjectsFound(dataObject.Id);
     }
 
     public void LoadLevel(string nameLevel)
@@ -51,17 +58,17 @@ public class GameControllerLevel1 : MonoBehaviour
 
     public void PlayEffectSound()
     {
-        _audioSource.PlayOneShot(_effectSound);
+        _audioSourceLevel1.PlayOneShot(_effectSound);
     }
 
     public void PlaySoundNameObject()
     {
-        _audioSource.PlayOneShot(_currentAudioNameObject);
+        _audioSourceLevel1.PlayOneShot(_currentAudioNameObject);
     }
 
     public void CountFindedObjects()
     {
-        if (_amountObjectsInScene >= _TotalNumberObjects)
+        if (_foundObjectsList.Count >= _TotalNumberObjects)
         {
             Debug.Log("Encontro todos los objetos, se termino el juego");
             _panelFinalGame.SetActive(true);
@@ -73,5 +80,18 @@ public class GameControllerLevel1 : MonoBehaviour
         SpiralController.Instance.LevelComplete();
         _panelForLevelOne.SetActive(false);
         _panelMenuSpiral.SetActive(true);
+        
+        if (_soLevelSpiral.Level < _soLevelSpiral.MaxLevel)
+        {
+            _soLevelSpiral.Level++;
+        }
+    }
+
+    private void CheckListObjectsFound(IDDesiredObject id)
+    {
+        if (!_foundObjectsList.Contains(id))
+        {
+            _foundObjectsList.Add(id);
+        }
     }
 }

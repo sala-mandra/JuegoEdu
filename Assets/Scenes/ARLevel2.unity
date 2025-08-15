@@ -995,12 +995,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cc9c6667c07da1b40a8a6bd92473c119, type: 3}
+  m_Resource: {fileID: 8300000, guid: cc9c6667c07da1b40a8a6bd92473c119, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1072,7 +1072,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4938,7 +4938,7 @@ MonoBehaviour:
   _textNameTwoObject: {fileID: 669020509}
   _textDescription: {fileID: 1615618483}
   _panelToShowName: {fileID: 112820278}
-  _effectAudio: {fileID: 8300000, guid: ce33112bfc2035f4c9459076ba4b88aa, type: 3}
+  _effectAudio: {fileID: 8300000, guid: 9fd8b0c0fa4e65c4c8132a638fcc0c86, type: 3}
   _audioSource: {fileID: 372241824}
   _panelFinal: {fileID: 1193752587}
 --- !u!1 &2109321770
