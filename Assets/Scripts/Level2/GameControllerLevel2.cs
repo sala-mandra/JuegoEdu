@@ -33,6 +33,7 @@ public class GameControllerLevel2 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textDescription;
     [SerializeField] private GameObject _panelToShowName;
     [SerializeField] private AudioClip _effectAudio;
+    [SerializeField] private AudioClip _effectFinalAudio;
     [SerializeField] private AudioSource _audioSource;
 
     [Header("Panels to intro")] 
@@ -252,7 +253,7 @@ public class GameControllerLevel2 : MonoBehaviour
     private IEnumerator StartAnimationTextTurn(GameObject currentTurnImage)
     {
         currentTurnImage.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         currentTurnImage.gameObject.SetActive(false);
     }
     
@@ -287,6 +288,7 @@ public class GameControllerLevel2 : MonoBehaviour
             _soLevelSpiral.Level++;
         }
         _panelFinal.SetActive(true);
+        _audioSource.PlayOneShot(_effectFinalAudio);
     }
     
     private int GetPhaseIndex()

@@ -20,6 +20,7 @@ public class GameControllerLevel1 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textDescription;
     [SerializeField] private Image _imageBackgroundDescription;
     [SerializeField] private AudioClip _effectSound;
+    [SerializeField] private AudioClip _effectFinalSound;
     [SerializeField] private AudioSource _audioSourceLevel1;
     [SerializeField] private int _TotalNumberObjects = 5;
     [SerializeField] private GameObject _panelFinalGame;
@@ -72,6 +73,7 @@ public class GameControllerLevel1 : MonoBehaviour
         {
             Debug.Log("Encontro todos los objetos, se termino el juego");
             _panelFinalGame.SetActive(true);
+            _audioSourceLevel1.PlayOneShot(_effectFinalSound);
         }
     }
     

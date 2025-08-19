@@ -4939,6 +4939,7 @@ MonoBehaviour:
   _textDescription: {fileID: 1615618483}
   _panelToShowName: {fileID: 112820278}
   _effectAudio: {fileID: 8300000, guid: 9fd8b0c0fa4e65c4c8132a638fcc0c86, type: 3}
+  _effectFinalAudio: {fileID: 8300000, guid: 44db5350ef09aa7499b664a9c0f1e50b, type: 3}
   _audioSource: {fileID: 372241824}
   _panelFinal: {fileID: 1193752587}
 --- !u!1 &2109321770

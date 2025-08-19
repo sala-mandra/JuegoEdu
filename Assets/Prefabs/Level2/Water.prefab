@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeObjectDrag: 1
-  _nameObject: piwam
+  _nameObject: pi wam
   _nameTwoObject: La voz del agua
   _descriptionObject: "Piwam recorre la monta\xF1a: un murmullo de r\xEDos, lluvia
     y lagunas sagradas que despierta la tierra antes de sembrar."

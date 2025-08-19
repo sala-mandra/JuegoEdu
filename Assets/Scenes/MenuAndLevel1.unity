@@ -440,7 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataWantedObjectRef:
     Id: 4
-    ClipNameObject: {fileID: 0}
+    ClipNameObject: {fileID: 8300000, guid: f76a140d22c041144ac494ae26ef008d, type: 3}
     NameObject: tampal kuari
     SecondNameObject: Sombrero misak
     DescriptionObject: "Sombrero tejido en espiral que \u201Ccuenta\u201D la vida
@@ -1943,7 +1943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataWantedObjectRef:
     Id: 3
-    ClipNameObject: {fileID: 0}
+    ClipNameObject: {fileID: 8300000, guid: b43cc5cf8b22afb45aa151789eae9d3f, type: 3}
     NameObject: wasr
     SecondNameObject: Mochila (jigra)
     DescriptionObject: "Guarda semillas y palabras. Cargarla es cuidar la vida que
@@ -2268,6 +2268,7 @@ MonoBehaviour:
   _textDescription: {fileID: 1085396894}
   _imageBackgroundDescription: {fileID: 542859669}
   _effectSound: {fileID: 8300000, guid: 9fd8b0c0fa4e65c4c8132a638fcc0c86, type: 3}
+  _effectFinalSound: {fileID: 8300000, guid: 44db5350ef09aa7499b664a9c0f1e50b, type: 3}
   _audioSourceLevel1: {fileID: 506707114}
   _TotalNumberObjects: 6
   _panelFinalGame: {fileID: 1904234123}
@@ -3958,7 +3959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataWantedObjectRef:
     Id: 1
-    ClipNameObject: {fileID: 0}
+    ClipNameObject: {fileID: 8300000, guid: 3825a93f6675a4241868d80079a45450, type: 3}
     NameObject: il'i
     SecondNameObject: "C\xF3ndor"
     DescriptionObject: "Gran ave andina que vuela muy alto y lo ve todo; une monta\xF1as
@@ -4854,7 +4855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataWantedObjectRef:
     Id: 0
-    ClipNameObject: {fileID: 8300000, guid: b011b5508e0c47744bdee156688972e7, type: 3}
+    ClipNameObject: {fileID: 8300000, guid: 02f4dcb0f545e324da787a866b2af28b, type: 3}
     NameObject: lus
     SecondNameObject: Flauta
     DescriptionObject: "Habla con el viento. Su sonido llama a la alegr\xEDa y a
@@ -4951,7 +4952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataWantedObjectRef:
     Id: 5
-    ClipNameObject: {fileID: 0}
+    ClipNameObject: {fileID: 8300000, guid: 1da106625996e7947bc51db687e5f142, type: 3}
     NameObject: pasrik
     SecondNameObject: Telar misak
     DescriptionObject: "Herramienta para tejer; cada hilo es un camino y un pensamiento.
@@ -5403,8 +5404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataWantedObjectRef:
     Id: 2
-    ClipNameObject: {fileID: 0}
-    NameObject: "sil\xF8mer"
+    ClipNameObject: {fileID: 8300000, guid: 5c7918a8d1db79d4696e696643451ecf, type: 3}
+    NameObject: Kasrak
     SecondNameObject: "Frailej\xF3n"
     DescriptionObject: "Planta del p\xE1ramo que guarda el agua de las monta\xF1as;
       nos ense\xF1a a proteger los nacederos y r\xEDos. "
