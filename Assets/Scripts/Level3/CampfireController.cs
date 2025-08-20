@@ -23,6 +23,7 @@ public class CampfireController : MonoBehaviour
     private FollowCamera _followCamera;
     private BoxCollider _colliderFire;
     private int _currentQuestion;
+    private bool _endGame;
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class CampfireController : MonoBehaviour
         else
         {
             Debug.Log("Termino el juego");
+            _endGame = true;
             _panelFinal.SetActive(true);
             _audioSource.PlayOneShot(_effectFinalSound);
         }
@@ -59,7 +61,10 @@ public class CampfireController : MonoBehaviour
 
     public void EnableButtonNextQuestion()
     {
-        _buttonsQuestions[_currentQuestion].SetActive(true);
+        if (_currentQuestion < _questions.Count && !_endGame)
+        {
+            _buttonsQuestions[_currentQuestion].SetActive(true);
+        }
     }
 
     public void LoadNewScene(string nameScene)

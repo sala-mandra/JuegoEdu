@@ -337,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911575518858334606, guid: e7c71b176548ff445a5c6de17496c7f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5911575518858334606, guid: e7c71b176548ff445a5c6de17496c7f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -345,11 +345,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911575518858334606, guid: e7c71b176548ff445a5c6de17496c7f5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9816273
+      value: 0.9902681
       objectReference: {fileID: 0}
     - target: {fileID: 5911575518858334606, guid: e7c71b176548ff445a5c6de17496c7f5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19080894
+      value: 0.13917309
       objectReference: {fileID: 0}
     - target: {fileID: 5911575518858334606, guid: e7c71b176548ff445a5c6de17496c7f5, type: 3}
       propertyPath: m_LocalRotation.y
@@ -361,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911575518858334606, guid: e7c71b176548ff445a5c6de17496c7f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 22
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5911575518858334606, guid: e7c71b176548ff445a5c6de17496c7f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -428,7 +428,7 @@ MonoBehaviour:
   _distanceFromCamera: 0.9
   _useRotation: 1
   _useScale: 1
-  _offset: {x: 0, y: -0.34, z: 0.1}
+  _offset: {x: 0, y: -0.25, z: 0.1}
   _rotationOffSet: {x: 22, y: 0, z: 0}
   _scaleOffSet: {x: 0.3, y: 0.3, z: 0.3}
 --- !u!114 &178142289
@@ -971,6 +971,18 @@ MonoBehaviour:
       - m_Target: {fileID: 178142289}
         m_TargetAssemblyTypeName: CampfireController, Assembly-CSharp
         m_MethodName: EnableButtonNextQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 722491175}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
