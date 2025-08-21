@@ -8,8 +8,6 @@ public class GameControllerLevel1 : MonoBehaviour
 {
     public static GameControllerLevel1 Instance;
 
-    [SerializeField] private SOLevelSpiral _soLevelSpiral;
-    
     [Header("Objects for level 1 enable")] 
     [SerializeField] private GameObject _panelForLevelOne;
     [SerializeField] private GameObject _panelMenuSpiral;
@@ -74,6 +72,7 @@ public class GameControllerLevel1 : MonoBehaviour
             Debug.Log("Encontro todos los objetos, se termino el juego");
             _panelFinalGame.SetActive(true);
             _audioSourceLevel1.PlayOneShot(_effectFinalSound);
+            CompleteLevel();
         }
     }
     
@@ -82,11 +81,6 @@ public class GameControllerLevel1 : MonoBehaviour
         SpiralController.Instance.LevelComplete();
         _panelForLevelOne.SetActive(false);
         _panelMenuSpiral.SetActive(true);
-        
-        if (_soLevelSpiral.Level < _soLevelSpiral.MaxLevel)
-        {
-            _soLevelSpiral.Level++;
-        }
     }
 
     private void CheckListObjectsFound(IDDesiredObject id)
