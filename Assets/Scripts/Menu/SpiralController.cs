@@ -127,8 +127,12 @@ public class SpiralController : MonoBehaviour
             _buttonsLevels[i].interactable = true;
             _goSpirals[i].SetActive(true);
         }
-        var currentImage = _goSpirals[_soLevelSpiral.Level - 1].GetComponent<Image>();
-        StartCoroutine(AnimationFilledSpiral(currentImage));
+
+        if (_soLevelSpiral.Level > 0)
+        {
+            var currentImage = _goSpirals[_soLevelSpiral.Level - 1].GetComponent<Image>();
+            StartCoroutine(AnimationFilledSpiral(currentImage));
+        }
     }
 
     private IEnumerator AnimationFilledSpiral(Image spiral)
