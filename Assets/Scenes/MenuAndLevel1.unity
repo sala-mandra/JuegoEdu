@@ -7493,53 +7493,69 @@ MonoBehaviour:
   _nextDialogueButtonGirl: {fileID: 8556540}
   _dialogues:
   - CharacterOneLine:
-      TextLine: Dialogo prev level 1
+      TextLine: "Haz click en el primer nivel de color verde con el s\xEDmbolo de
+        las monta\xF1as, nuestro territorio. All\xED descubrir\xE1s elementos importantes
+        de nuestra cultura y del territorio."
       TalkingSprite: {fileID: 21300000, guid: 2e4710bcaadf93e4394af440549f9da5, type: 3}
       IdleSprite: {fileID: 21300000, guid: 617756ed34d8c7a43a17a9b461e9f152, type: 3}
       TextBoxCharacter: {fileID: 1352810462}
       ImageCharacter: {fileID: 1843851104}
     CharacterTwoLine:
-      TextLine: Dialogo prev level 1
+      TextLine: "Al entrar, lee y escucha con calma; cada hallazgo podr\xE1s escucharlo
+        en nuestro idioma materno, namtrik (tambi\xE9n llamado namuy wam), y en espa\xF1ol."
       TalkingSprite: {fileID: 21300000, guid: e0a5cad1c520ac04d9afb39fa0e2f002, type: 3}
       IdleSprite: {fileID: 21300000, guid: a777e2b03ac297744a309b76fa9956c9, type: 3}
       TextBoxCharacter: {fileID: 1819224559}
       ImageCharacter: {fileID: 848977358}
   - CharacterOneLine:
-      TextLine: Dialogo prev level 2
-      TalkingSprite: {fileID: 21300000, guid: 2e4710bcaadf93e4394af440549f9da5, type: 3}
-      IdleSprite: {fileID: 21300000, guid: 617756ed34d8c7a43a17a9b461e9f152, type: 3}
-      TextBoxCharacter: {fileID: 1352810462}
-      ImageCharacter: {fileID: 1843851104}
-    CharacterTwoLine:
-      TextLine: Dialogo prev level 2
-      TalkingSprite: {fileID: 21300000, guid: e0a5cad1c520ac04d9afb39fa0e2f002, type: 3}
-      IdleSprite: {fileID: 21300000, guid: a777e2b03ac297744a309b76fa9956c9, type: 3}
-      TextBoxCharacter: {fileID: 1819224559}
-      ImageCharacter: {fileID: 848977358}
-  - CharacterOneLine:
-      TextLine: Dialogo prev level 3
-      TalkingSprite: {fileID: 21300000, guid: 2e4710bcaadf93e4394af440549f9da5, type: 3}
-      IdleSprite: {fileID: 21300000, guid: 617756ed34d8c7a43a17a9b461e9f152, type: 3}
-      TextBoxCharacter: {fileID: 1352810462}
-      ImageCharacter: {fileID: 1843851104}
-    CharacterTwoLine:
-      TextLine: Dialogo prev level 3
-      TalkingSprite: {fileID: 21300000, guid: e0a5cad1c520ac04d9afb39fa0e2f002, type: 3}
-      IdleSprite: {fileID: 21300000, guid: a777e2b03ac297744a309b76fa9956c9, type: 3}
-      TextBoxCharacter: {fileID: 1819224559}
-      ImageCharacter: {fileID: 848977358}
-  - CharacterOneLine:
-      TextLine: Dialogo final
-      TalkingSprite: {fileID: 21300000, guid: 2e4710bcaadf93e4394af440549f9da5, type: 3}
+      TextLine: "\xA1Muy bien! Aprendiste un poco m\xE1s sobre elementos clave de
+        nuestra cultura y nuestro territorio. \xA1Sigamos juntas y juntos por este
+        camino en espiral!"
+      TalkingSprite: {fileID: 21300000, guid: 6d84fc9c69a45404984a84dec175bca6, type: 3}
       IdleSprite: {fileID: 21300000, guid: 797b142afed23c043a52e9c51795fb4a, type: 3}
+      TextBoxCharacter: {fileID: 1819224559}
+      ImageCharacter: {fileID: 848977358}
+    CharacterTwoLine:
+      TextLine: "Haz click en el segundo nivel naranja con el s\xEDmbolo de la cosecha.
+        All\xED trabajaremos en equipo para ayudarnos entre todas y todos y construir
+        el yatul, la huerta familiar."
+      TalkingSprite: {fileID: 21300000, guid: 2e4710bcaadf93e4394af440549f9da5, type: 3}
+      IdleSprite: {fileID: 21300000, guid: a777e2b03ac297744a309b76fa9956c9, type: 3}
+      TextBoxCharacter: {fileID: 1352810462}
+      ImageCharacter: {fileID: 1843851104}
+  - CharacterOneLine:
+      TextLine: "\xA1Estupendo! Ahora sabes por qu\xE9 es importante ayudarnos en
+        equipo para construir el yatul (la huerta familiar). \xA1Sigamos nuestro
+        camino en espiral!"
+      TalkingSprite: {fileID: 21300000, guid: 2e4710bcaadf93e4394af440549f9da5, type: 3}
+      IdleSprite: {fileID: 21300000, guid: 617756ed34d8c7a43a17a9b461e9f152, type: 3}
       TextBoxCharacter: {fileID: 1352810462}
       ImageCharacter: {fileID: 1843851104}
     CharacterTwoLine:
-      TextLine: Dialogo final
+      TextLine: "Llegamos al nakchak, el \xFAltimo nivel con el s\xEDmbolo del fuego.
+        All\xED retornaremos nuestro camino en espiral al hogar y a la comunidad
+        mediante el di\xE1logo con respeto y alrededor del fog\xF3n"
       TalkingSprite: {fileID: 21300000, guid: e0a5cad1c520ac04d9afb39fa0e2f002, type: 3}
-      IdleSprite: {fileID: 21300000, guid: 6d84fc9c69a45404984a84dec175bca6, type: 3}
+      IdleSprite: {fileID: 21300000, guid: a777e2b03ac297744a309b76fa9956c9, type: 3}
       TextBoxCharacter: {fileID: 1819224559}
       ImageCharacter: {fileID: 848977358}
+  - CharacterOneLine:
+      TextLine: "\xA1Felicidades y gracias por tu gran trabajo! Escuchaste y respetaste
+        la palabra en el nakchak y completaste cada uno de los niveles que hemos
+        recorrido juntas y juntos en el camino de espiral. "
+      TalkingSprite: {fileID: 21300000, guid: 6d84fc9c69a45404984a84dec175bca6, type: 3}
+      IdleSprite: {fileID: 21300000, guid: 797b142afed23c043a52e9c51795fb4a, type: 3}
+      TextBoxCharacter: {fileID: 1819224559}
+      ImageCharacter: {fileID: 848977358}
+    CharacterTwoLine:
+      TextLine: "\xA1unkua unkua, muchas gracias! Queremos darte una pulsera de regalo
+        por tu gran trabajo. Gu\xE1rdala, impr\xEDmela, comp\xE1rtela y \xFAsala.
+        Recuerda: pervivimos cuando caminamos juntas y juntos en espiral \u200F\uAA5C
+        <(este icono del espiral ponla en arial)"
+      TalkingSprite: {fileID: 21300000, guid: 797b142afed23c043a52e9c51795fb4a, type: 3}
+      IdleSprite: {fileID: 21300000, guid: 6d84fc9c69a45404984a84dec175bca6, type: 3}
+      TextBoxCharacter: {fileID: 1352810462}
+      ImageCharacter: {fileID: 1843851104}
 --- !u!1 &1412431953
 GameObject:
   m_ObjectHideFlags: 0
