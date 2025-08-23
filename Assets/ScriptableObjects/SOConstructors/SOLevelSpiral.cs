@@ -5,4 +5,5 @@ public class SOLevelSpiral : ScriptableObject
 {
     public int Level;
     public int MaxLevel;
+    public bool[] LevelsComplete;
 }

@@ -8,10 +8,13 @@ public class GameControllerLevel1 : MonoBehaviour
 {
     public static GameControllerLevel1 Instance;
 
-    [Header("Objects for level 1 enable")] 
+    [SerializeField] private SOLevelSpiral _soLevelSpiral;
+    
+    [Header("Objects for level 1 enable")]
     [SerializeField] private GameObject _panelForLevelOne;
     [SerializeField] private GameObject _panelMenuSpiral;
-    
+
+    [SerializeField] private Image[] _objectToFound;
     [SerializeField] private GameObject _panelDescription;
     [SerializeField] private TextMeshProUGUI _textNameObject;
     [SerializeField] private TextMeshProUGUI _textSecondNameObject;
@@ -36,6 +39,12 @@ public class GameControllerLevel1 : MonoBehaviour
 
     public void RestartLevelOne()
     {
+        foreach (var objectTemp in _objectToFound)
+        {
+            var colorTemp = objectTemp.color;
+            colorTemp.a = 150f;
+            objectTemp.color = colorTemp;
+        }
         _foundObjectsList.Clear();
     }
 
@@ -72,13 +81,14 @@ public class GameControllerLevel1 : MonoBehaviour
             Debug.Log("Encontro todos los objetos, se termino el juego");
             _panelFinalGame.SetActive(true);
             _audioSourceLevel1.PlayOneShot(_effectFinalSound);
-            CompleteLevel();
+            EndLevel();
         }
     }
     
-    private void CompleteLevel()
+    private void EndLevel()
     {
-        SpiralController.Instance.LevelComplete();
+        LevelsController.Instance.CompleteLevel();
+        SpiralController.Instance.EndLevelOne();
     }
 
     private void CheckListObjectsFound(IDDesiredObject id)

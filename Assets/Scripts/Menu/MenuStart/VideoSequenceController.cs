@@ -7,6 +7,7 @@ public class VideoSequenceController : MonoBehaviour
     [SerializeField] private VideoPlayer _videoPresentation;
     [SerializeField] private GameObject _panelMenuSpiral;
     [SerializeField] private GameObject _containerStartGamePanels;
+    [SerializeField] private GameObject _audioSourceMenu;
 
     private VideoPlayer _vp;
     
@@ -41,5 +42,6 @@ public class VideoSequenceController : MonoBehaviour
     {
         _containerStartGamePanels.SetActive(false);
         _panelMenuSpiral.SetActive(true);
+        _audioSourceMenu.SetActive(true);
     }
 }

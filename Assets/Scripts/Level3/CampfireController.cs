@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class CampfireController : MonoBehaviour
 {
+    [SerializeField] private SOLevelSpiral _soLevelSpiral;
+    
     [SerializeField] private List<QuestionsAndAnswers> _questions;
     [SerializeField] private ParticleSystem _fireInCampfire;
     [SerializeField] private GameObject _panelQuestion;
@@ -45,6 +47,13 @@ public class CampfireController : MonoBehaviour
         }
         else
         {
+            // var levelTemp = _soLevelSpiral.LevelsComplete[_soLevelSpiral.Level];
+            // if (_soLevelSpiral.Level <= _soLevelSpiral.MaxLevel && levelTemp)
+            // {
+            //     _soLevelSpiral.Level++;
+            // }
+            LevelsController.Instance.CompleteLevel();
+            
             Debug.Log("Termino el juego");
             _endGame = true;
             _panelFinal.SetActive(true);

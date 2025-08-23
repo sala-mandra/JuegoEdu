@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,13 +31,29 @@ public class SpiralController : MonoBehaviour
     
     private void Start()
     {
-        UpdateStateSpiral();
+        if (_soLevelSpiral.Level > 0)
+        {
+            RestoreSpiralsState();
+        }
         StartDialogue();
         _nextDialogueButtonGirl.onClick.AddListener(OnNextClicked);
         _nextDialogueButtonBoy.onClick.AddListener(OnNextClicked);
     }
-
     
+    private void RestoreSpiralsState()
+    {
+        for (var i = 0; i < _soLevelSpiral.Level - 1; i++)
+        {
+            _goSpirals[i].SetActive(true);
+            var spiralImage = _goSpirals[i].GetComponent<Image>();
+            spiralImage.fillAmount = 1f;
+        }
+        
+        for (var i = 0; i < _soLevelSpiral.Level; i++)
+        {
+            _buttonsLevels[i].interactable = true;
+        }
+    }
 
     private void StartDialogue()
     {
@@ -52,11 +67,12 @@ public class SpiralController : MonoBehaviour
 
         if (_dialogueStep == 0)
         {
+            
             data.CharacterTwoLine.TextBoxCharacter.transform.parent.gameObject.SetActive(false);
             data.CharacterOneLine.TextBoxCharacter.text = data.CharacterOneLine.TextLine;
             data.CharacterOneLine.TextBoxCharacter.transform.parent.gameObject.SetActive(true);
             data.CharacterOneLine.ImageCharacter.sprite = data.CharacterOneLine.TalkingSprite;
-            data.CharacterTwoLine.ImageCharacter.sprite = data.CharacterTwoLine.IdleSprite;
+            data.CharacterTwoLine.ImageCharacter.sprite = data.CharacterOneLine.IdleSprite;
         }
         else if (_dialogueStep == 1)
         {
@@ -64,7 +80,7 @@ public class SpiralController : MonoBehaviour
             data.CharacterTwoLine.TextBoxCharacter.text = data.CharacterTwoLine.TextLine;
             data.CharacterTwoLine.TextBoxCharacter.transform.parent.gameObject.SetActive(true);
             data.CharacterTwoLine.ImageCharacter.sprite = data.CharacterTwoLine.TalkingSprite;
-            data.CharacterOneLine.ImageCharacter.sprite = data.CharacterOneLine.IdleSprite;
+            data.CharacterOneLine.ImageCharacter.sprite = data.CharacterTwoLine.IdleSprite;
         }
     }
     
@@ -83,25 +99,22 @@ public class SpiralController : MonoBehaviour
     
     private void EndDialogue()
     {
-        if (_soLevelSpiral.Level <= _soLevelSpiral.MaxLevel)
+        if (_soLevelSpiral.Level > 0 && _soLevelSpiral.Level <= _soLevelSpiral.MaxLevel)
         {
-            if (_soLevelSpiral.Level == _soLevelSpiral.MaxLevel)
+            var completedIndex = _soLevelSpiral.Level - 1;
+            if (completedIndex >= 0 && completedIndex < _goSpirals.Length)
             {
-                FinalEvent();
-            }
-            else
-            {
-                StartAnimationSpiral();
+                var spiralImage = _goSpirals[completedIndex].GetComponent<Image>();
+                StartCoroutine(AnimationFilledSpiral(spiralImage));
             }
         }
-    }
-    
-    private void StartAnimationSpiral()
-    {
-        if (_soLevelSpiral.Level > 0)
+        else if (_soLevelSpiral.Level == 0)
         {
-            var currentImage = _goSpirals[_soLevelSpiral.Level - 1].GetComponent<Image>();
-            StartCoroutine(AnimationFilledSpiral(currentImage));
+            _buttonsLevels[_soLevelSpiral.Level].interactable = true;
+        }
+        else
+        {
+            FinalEvent();
         }
     }
     
@@ -109,34 +122,41 @@ public class SpiralController : MonoBehaviour
     {
         var finalData = _dialogues[_dialogues.Length - 1];
 
-        // Cambiar sprites finales si están definidos
-        // if (finalData.character1FinalSprite != null)
-        //     character1Image.sprite = finalData.character1FinalSprite;
-        // if (finalData.character2FinalSprite != null)
-        //     character2Image.sprite = finalData.character2FinalSprite;
-
         _panelFinalGame.SetActive(true);
     }
 
-    public void LevelComplete()
+    public void EndLevelOne()
     {
-        if (_soLevelSpiral.Level < _buttonsLevels.Length)
-        {
-            _soLevelSpiral.Level++;
-            transform.parent.gameObject.SetActive(true);
-            UpdateStateSpiral();
-            StartDialogue();
-        }
+        StartDialogue();
+        // var completedIndex = _soLevelSpiral.Level;
+        // if (completedIndex < _goSpirals.Length)
+        // {
+        //     var spiralImage = _goSpirals[completedIndex].GetComponent<Image>();
+        //     StartCoroutine(AnimationFilledSpiral(spiralImage));
+        // }
+        //
+        // _soLevelSpiral.Level++;
+        //
+        // if (_soLevelSpiral.Level < _buttonsLevels.Length)
+        // {
+        //     _buttonsLevels[_soLevelSpiral.Level].interactable = true;
+        // }
+        // else
+        // {
+        //     FinalEvent();
+        // }
+        //
+        // StartDialogue();
     }
     
-    private void UpdateStateSpiral()
-    {
-        for (var i = 0; i < _soLevelSpiral.Level; i++)
-        {
-            _buttonsLevels[i].interactable = true;
-            _goSpirals[i].SetActive(true);
-        }
-    }
+    // private void UpdateStateSpiral()
+    // {
+    //     for (var i = 0; i < _soLevelSpiral.Level; i++)
+    //     {
+    //         _buttonsLevels[i].interactable = true;
+    //         _goSpirals[i].SetActive(true);
+    //     }
+    // }
 
     private IEnumerator AnimationFilledSpiral(Image spiral)
     {
@@ -144,10 +164,14 @@ public class SpiralController : MonoBehaviour
         var currentValueFill = spiral.fillAmount;
         while (currentValueFill < maxValue)
         {
-            currentValueFill += _speedAnimator;
-            spiral.fillAmount = currentValueFill;
+            currentValueFill += _speedAnimator * Time.deltaTime;
+            spiral.fillAmount = Mathf.Min(currentValueFill, maxValue);
             yield return null;
         }
-        _buttonsLevels[_soLevelSpiral.Level].interactable = true;
+
+        if (_soLevelSpiral.Level < _buttonsLevels.Length)
+        {
+            _buttonsLevels[_soLevelSpiral.Level].interactable = true;
+        }
     }
 }

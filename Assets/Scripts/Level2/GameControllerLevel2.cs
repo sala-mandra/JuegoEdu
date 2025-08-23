@@ -283,10 +283,11 @@ public class GameControllerLevel2 : MonoBehaviour
     private void EndGame()
     {
         Debug.Log("Ya ha terminado el juego");
-        if (_soLevelSpiral.Level < _soLevelSpiral.MaxLevel)
-        {
-            _soLevelSpiral.Level++;
-        }
+        // if (_soLevelSpiral.Level < _soLevelSpiral.MaxLevel)
+        // {
+        //     _soLevelSpiral.Level++;
+        // }
+        LevelsController.Instance.CompleteLevel();
         _panelFinal.SetActive(true);
         _audioSource.PlayOneShot(_effectFinalAudio);
     }

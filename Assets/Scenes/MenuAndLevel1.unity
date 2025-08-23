@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &4002112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4002114}
+  - component: {fileID: 4002113}
+  m_Layer: 0
+  m_Name: LevelsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &4002113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd95b7736401614d9d4fe8d92b74c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soLevelSpiral: {fileID: 11400000, guid: 11f7e85c1315f3d409fd792c6ad93792, type: 2}
+--- !u!4 &4002114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8556538
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +373,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 23428157}
   m_OnClick:
     m_PersistentCalls:
@@ -2900,7 +2945,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555983985}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: bbaf58053e84529488a723dcc0253c62, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 881ba2207c537f24baa173343437e3b4, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 330585545}
@@ -3392,8 +3437,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d9c615d315dd84689d0652c9aec106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soLevelSpiral: {fileID: 11400000, guid: 11f7e85c1315f3d409fd792c6ad93792, type: 2}
   _panelForLevelOne: {fileID: 1052487896}
   _panelMenuSpiral: {fileID: 1440404315}
+  _objectToFound: []
   _panelDescription: {fileID: 1693031571}
   _textNameObject: {fileID: 1132424077}
   _textSecondNameObject: {fileID: 556339154}
@@ -4740,6 +4787,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 994887284}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1052487896}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -6628,6 +6687,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 614114560}
+        m_TargetAssemblyTypeName: GameControllerLevel1, Assembly-CSharp
+        m_MethodName: RestartLevelOne
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1132474378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7107,7 +7178,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229031083}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: bbaf58053e84529488a723dcc0253c62, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 0d2f809c30f3b474b8847b3b73456406, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 330585545}
@@ -7420,6 +7491,7 @@ MonoBehaviour:
   _videoPresentation: {fileID: 555983986}
   _panelMenuSpiral: {fileID: 1440404315}
   _containerStartGamePanels: {fileID: 417223345}
+  _audioSourceMenu: {fileID: 984637452}
 --- !u!1 &1330976081
 GameObject:
   m_ObjectHideFlags: 0
@@ -7985,7 +8057,7 @@ MonoBehaviour:
   - {fileID: 1591223366}
   - {fileID: 1964318929}
   _soLevelSpiral: {fileID: 11400000, guid: 11f7e85c1315f3d409fd792c6ad93792, type: 2}
-  _speedAnimator: 0.13
+  _speedAnimator: 3
   _panelFinalGame: {fileID: 743986126}
   _nextDialogueButtonBoy: {fileID: 502206707}
   _nextDialogueButtonGirl: {fileID: 8556540}
@@ -7995,14 +8067,14 @@ MonoBehaviour:
         las monta\xF1as, nuestro territorio. All\xED descubrir\xE1s elementos importantes
         de nuestra cultura y del territorio."
       TalkingSprite: {fileID: 21300000, guid: 2e4710bcaadf93e4394af440549f9da5, type: 3}
-      IdleSprite: {fileID: 21300000, guid: 617756ed34d8c7a43a17a9b461e9f152, type: 3}
+      IdleSprite: {fileID: 21300000, guid: a777e2b03ac297744a309b76fa9956c9, type: 3}
       TextBoxCharacter: {fileID: 1352810462}
       ImageCharacter: {fileID: 1843851104}
     CharacterTwoLine:
       TextLine: "Al entrar, lee y escucha con calma; cada hallazgo podr\xE1s escucharlo
         en nuestro idioma materno, namtrik (tambi\xE9n llamado namuy wam), y en espa\xF1ol."
       TalkingSprite: {fileID: 21300000, guid: e0a5cad1c520ac04d9afb39fa0e2f002, type: 3}
-      IdleSprite: {fileID: 21300000, guid: a777e2b03ac297744a309b76fa9956c9, type: 3}
+      IdleSprite: {fileID: 21300000, guid: 617756ed34d8c7a43a17a9b461e9f152, type: 3}
       TextBoxCharacter: {fileID: 1819224559}
       ImageCharacter: {fileID: 848977358}
   - CharacterOneLine:
@@ -10399,3 +10471,4 @@ SceneRoots:
   - {fileID: 984637454}
   - {fileID: 506707115}
   - {fileID: 146596434}
+  - {fileID: 4002114}
