@@ -38,6 +38,8 @@ public class SpiralController : MonoBehaviour
         _nextDialogueButtonBoy.onClick.AddListener(OnNextClicked);
     }
 
+    
+
     private void StartDialogue()
     {
         _dialogueStep = 0;
@@ -81,8 +83,6 @@ public class SpiralController : MonoBehaviour
     
     private void EndDialogue()
     {
-        //_soLevelSpiral.Level++;
-
         if (_soLevelSpiral.Level <= _soLevelSpiral.MaxLevel)
         {
             if (_soLevelSpiral.Level == _soLevelSpiral.MaxLevel)
@@ -91,8 +91,17 @@ public class SpiralController : MonoBehaviour
             }
             else
             {
-                _buttonsLevels[_soLevelSpiral.Level].interactable = true;
+                StartAnimationSpiral();
             }
+        }
+    }
+    
+    private void StartAnimationSpiral()
+    {
+        if (_soLevelSpiral.Level > 0)
+        {
+            var currentImage = _goSpirals[_soLevelSpiral.Level - 1].GetComponent<Image>();
+            StartCoroutine(AnimationFilledSpiral(currentImage));
         }
     }
     
@@ -127,12 +136,6 @@ public class SpiralController : MonoBehaviour
             _buttonsLevels[i].interactable = true;
             _goSpirals[i].SetActive(true);
         }
-
-        if (_soLevelSpiral.Level > 0)
-        {
-            var currentImage = _goSpirals[_soLevelSpiral.Level - 1].GetComponent<Image>();
-            StartCoroutine(AnimationFilledSpiral(currentImage));
-        }
     }
 
     private IEnumerator AnimationFilledSpiral(Image spiral)
@@ -145,5 +148,6 @@ public class SpiralController : MonoBehaviour
             spiral.fillAmount = currentValueFill;
             yield return null;
         }
+        _buttonsLevels[_soLevelSpiral.Level].interactable = true;
     }
 }

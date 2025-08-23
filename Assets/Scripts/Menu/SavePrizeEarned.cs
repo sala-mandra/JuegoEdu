@@ -6,6 +6,7 @@ using PdfSharpCore.Drawing;
 
 public class SavePrizeEarned : MonoBehaviour
 {
+    [SerializeField] private GameObject _panelDownload;
     [SerializeField] private Texture2D _imagePrize;
     [SerializeField] private GameObject _textIsSaved;
 
@@ -43,5 +44,6 @@ public class SavePrizeEarned : MonoBehaviour
         _textIsSaved.SetActive(true);
         yield return new WaitForSeconds(2);
         _textIsSaved.SetActive(false);
+        _panelDownload.SetActive(false);
     }
 }

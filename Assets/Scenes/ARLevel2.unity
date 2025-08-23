@@ -2409,7 +2409,7 @@ RectTransform:
   m_GameObject: {fileID: 1182648220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1415088293}
@@ -3538,6 +3538,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 7abad12e977784544bd7421e3ba5c38f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2153377142709423683, guid: 377b27c1649038743b55d6e34ef7dbd3, type: 3}
     - target: {fileID: 919132149155446097, guid: 7abad12e977784544bd7421e3ba5c38f, type: 3}
       propertyPath: m_Name
       value: tierraSpiralFinal
@@ -3854,15 +3858,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b30509e1d73d2d548af6fc171abe1334, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.285
+      value: -5.054
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b30509e1d73d2d548af6fc171abe1334, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.307
+      value: 0.179
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b30509e1d73d2d548af6fc171abe1334, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.756
+      value: 3.283
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b30509e1d73d2d548af6fc171abe1334, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3934,7 +3938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedAnimation: 0.02
   _rateDownPlant: -0.5
-  _rateDistanceUpPlant: 0.1
+  _rateDistanceUpPlant: 0.01
 --- !u!114 &1654864157
 MonoBehaviour:
   m_ObjectHideFlags: 0

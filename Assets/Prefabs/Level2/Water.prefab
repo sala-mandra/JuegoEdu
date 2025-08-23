@@ -123,7 +123,7 @@ MonoBehaviour:
   TypeObjectDrag: 1
   _nameObject: pi wam
   _nameTwoObject: La voz del agua
-  _descriptionObject: "Piwam recorre la monta\xF1a: un murmullo de r\xEDos, lluvia
+  _descriptionObject: "Pi wam recorre la monta\xF1a: un murmullo de r\xEDos, lluvia
     y lagunas sagradas que despierta la tierra antes de sembrar."
   _backgroundObject: {fileID: 21300000, guid: 68fe33346534ab54f81fe4d8b113db94, type: 3}
   _speedAnimation: 1.2

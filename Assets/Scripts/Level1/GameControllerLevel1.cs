@@ -76,11 +76,9 @@ public class GameControllerLevel1 : MonoBehaviour
         }
     }
     
-    public void CompleteLevel()
+    private void CompleteLevel()
     {
         SpiralController.Instance.LevelComplete();
-        _panelForLevelOne.SetActive(false);
-        _panelMenuSpiral.SetActive(true);
     }
 
     private void CheckListObjectsFound(IDDesiredObject id)
