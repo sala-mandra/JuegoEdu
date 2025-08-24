@@ -113,7 +113,6 @@ public class SeedController : MonoBehaviour
         {
             if (hit.transform.GetComponent<BaseGuideController>())
             {
-                Debug.Log("Sobre un Target: " + hit.collider.name);
                 _currentBaseGuideSelected = hit.transform.GetComponent<BaseGuideController>();
                 _overTarget = true;
             }

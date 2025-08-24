@@ -387,6 +387,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6431688037457070900, guid: e7c71b176548ff445a5c6de17496c7f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -7194459379362255501, guid: e7c71b176548ff445a5c6de17496c7f5, type: 3}
@@ -470,6 +474,7 @@ MonoBehaviour:
   _fireInCampfire: {fileID: 1947842535}
   _panelQuestion: {fileID: 750417342}
   _audioSource: {fileID: 722491175}
+  _audioSourceFeedback: {fileID: 1130702066}
   _effectFinalSound: {fileID: 8300000, guid: 44db5350ef09aa7499b664a9c0f1e50b, type: 3}
   _panelFinal: {fileID: 1219164533}
   _titleQuestion: {fileID: 983248034}
@@ -3030,6 +3035,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 985669936}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 178142286}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

@@ -3,10 +3,14 @@ using System.IO;
 using UnityEngine;
 using PdfSharpCore.Pdf;
 using PdfSharpCore.Drawing;
+using UnityEngine.UI;
 
 public class SavePrizeEarned : MonoBehaviour
 {
     [SerializeField] private GameObject _panelDownload;
+    [SerializeField] private GameObject _panelGameOver;
+    [SerializeField] private Button _buttonRestart;
+    [SerializeField] private Button _buttonExit;
     [SerializeField] private Texture2D _imagePrize;
     [SerializeField] private GameObject _textIsSaved;
 
@@ -45,5 +49,8 @@ public class SavePrizeEarned : MonoBehaviour
         yield return new WaitForSeconds(2);
         _textIsSaved.SetActive(false);
         _panelDownload.SetActive(false);
+        _panelGameOver.SetActive(true);
+        _buttonRestart.onClick.AddListener(LevelsController.Instance.RestartGame);
+        _buttonExit.onClick.AddListener(LevelsController.Instance.ExitGame);
     }
 }

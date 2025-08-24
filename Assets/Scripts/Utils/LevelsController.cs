@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelsController : MonoBehaviour
 {
@@ -30,5 +31,21 @@ public class LevelsController : MonoBehaviour
             _soLevelSpiral.LevelsComplete[_soLevelSpiral.Level] = true;
             _soLevelSpiral.Level++;
         }
+        else if (_soLevelSpiral.Level <= _soLevelSpiral.MaxLevel)
+        {
+            _soLevelSpiral.Level++;
+        }
+    }
+
+    public void RestartGame()
+    {
+        _soLevelSpiral.Level = 0;
+        _soLevelSpiral.LevelsComplete = new bool[_soLevelSpiral.MaxLevel];
+        SceneManager.LoadScene("MenuAndLevel1");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

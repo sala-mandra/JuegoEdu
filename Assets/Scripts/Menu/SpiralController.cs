@@ -112,52 +112,13 @@ public class SpiralController : MonoBehaviour
         {
             _buttonsLevels[_soLevelSpiral.Level].interactable = true;
         }
-        else
-        {
-            FinalEvent();
-        }
-    }
-    
-    private void FinalEvent()
-    {
-        var finalData = _dialogues[_dialogues.Length - 1];
-
-        _panelFinalGame.SetActive(true);
     }
 
     public void EndLevelOne()
     {
         StartDialogue();
-        // var completedIndex = _soLevelSpiral.Level;
-        // if (completedIndex < _goSpirals.Length)
-        // {
-        //     var spiralImage = _goSpirals[completedIndex].GetComponent<Image>();
-        //     StartCoroutine(AnimationFilledSpiral(spiralImage));
-        // }
-        //
-        // _soLevelSpiral.Level++;
-        //
-        // if (_soLevelSpiral.Level < _buttonsLevels.Length)
-        // {
-        //     _buttonsLevels[_soLevelSpiral.Level].interactable = true;
-        // }
-        // else
-        // {
-        //     FinalEvent();
-        // }
-        //
-        // StartDialogue();
     }
     
-    // private void UpdateStateSpiral()
-    // {
-    //     for (var i = 0; i < _soLevelSpiral.Level; i++)
-    //     {
-    //         _buttonsLevels[i].interactable = true;
-    //         _goSpirals[i].SetActive(true);
-    //     }
-    // }
-
     private IEnumerator AnimationFilledSpiral(Image spiral)
     {
         var maxValue = 1f;
@@ -173,5 +134,15 @@ public class SpiralController : MonoBehaviour
         {
             _buttonsLevels[_soLevelSpiral.Level].interactable = true;
         }
+        
+        if (_soLevelSpiral.Level == _soLevelSpiral.MaxLevel)
+        {
+            FinalEvent();
+        }
+    }
+    
+    private void FinalEvent()
+    {
+        _panelFinalGame.SetActive(true);
     }
 }

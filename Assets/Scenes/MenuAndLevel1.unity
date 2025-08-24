@@ -1302,6 +1302,56 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &378709917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 378709919}
+  - component: {fileID: 378709918}
+  m_Layer: 0
+  m_Name: SavePDFController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &378709918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378709917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6200604788c8d4e954565fcfd6e6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panelDownload: {fileID: 743986126}
+  _panelGameOver: {fileID: 512850084}
+  _buttonRestart: {fileID: 2022097254}
+  _buttonExit: {fileID: 713253959}
+  _imagePrize: {fileID: 2800000, guid: 6e7e2bec018f36947807bfad0c59327d, type: 3}
+  _textIsSaved: {fileID: 885927452}
+--- !u!4 &378709919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378709917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &391747772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1761,7 @@ MonoBehaviour:
   _soLevelSpiral: {fileID: 11400000, guid: 11f7e85c1315f3d409fd792c6ad93792, type: 2}
   _containerStartGame: {fileID: 417223345}
   _panelMenuSpiral: {fileID: 1440404315}
+  _audioSourceMapa: {fileID: 984637452}
 --- !u!1 &482078544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,6 +2344,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDownload: {fileID: 0}
+  _panelGameOver: {fileID: 0}
+  _buttonRestart: {fileID: 0}
+  _buttonExit: {fileID: 0}
   _imagePrize: {fileID: 2800000, guid: 6e7e2bec018f36947807bfad0c59327d, type: 3}
   _textIsSaved: {fileID: 0}
 --- !u!114 &512850087
@@ -4195,7 +4249,6 @@ GameObject:
   - component: {fileID: 743986127}
   - component: {fileID: 743986129}
   - component: {fileID: 743986128}
-  - component: {fileID: 743986130}
   m_Layer: 5
   m_Name: PanelFinalGameDownload
   m_TagString: Untagged
@@ -4264,21 +4317,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743986126}
   m_CullTransparentMesh: 1
---- !u!114 &743986130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 743986126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6200604788c8d4e954565fcfd6e6f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _panelDownload: {fileID: 743986126}
-  _imagePrize: {fileID: 2800000, guid: 6e7e2bec018f36947807bfad0c59327d, type: 3}
-  _textIsSaved: {fileID: 885927452}
 --- !u!1 &748075251
 GameObject:
   m_ObjectHideFlags: 0
@@ -8104,7 +8142,7 @@ MonoBehaviour:
     CharacterTwoLine:
       TextLine: "Llegamos al nakchak, el \xFAltimo nivel con el s\xEDmbolo del fuego.
         All\xED retornaremos nuestro camino en espiral al hogar y a la comunidad
-        mediante el di\xE1logo con respeto y alrededor del fog\xF3n"
+        mediante el di\xE1logo con respeto y alrededor del fog\xF3n."
       TalkingSprite: {fileID: 21300000, guid: e0a5cad1c520ac04d9afb39fa0e2f002, type: 3}
       IdleSprite: {fileID: 21300000, guid: 617756ed34d8c7a43a17a9b461e9f152, type: 3}
       TextBoxCharacter: {fileID: 1819224559}
@@ -8120,8 +8158,7 @@ MonoBehaviour:
     CharacterTwoLine:
       TextLine: "\xA1unkua unkua, muchas gracias! Queremos darte una pulsera de regalo
         por tu gran trabajo. Gu\xE1rdala, impr\xEDmela, comp\xE1rtela y \xFAsala.
-        Recuerda: pervivimos cuando caminamos juntas y juntos en espiral \u200F\uAA5C
-        <(este icono del espiral ponla en arial)"
+        Recuerda: pervivimos cuando caminamos juntas y juntos en espiral \u200F\uAA5C "
       TalkingSprite: {fileID: 21300000, guid: 797b142afed23c043a52e9c51795fb4a, type: 3}
       IdleSprite: {fileID: 21300000, guid: 6d84fc9c69a45404984a84dec175bca6, type: 3}
       TextBoxCharacter: {fileID: 1352810462}
@@ -9728,7 +9765,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 743986130}
+      - m_Target: {fileID: 378709918}
         m_TargetAssemblyTypeName: SavePrizeEarned, Assembly-CSharp
         m_MethodName: SaveAsPDF
         m_Mode: 1
@@ -9739,18 +9776,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 512850084}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1929998366
 MonoBehaviour:
@@ -10472,3 +10497,4 @@ SceneRoots:
   - {fileID: 506707115}
   - {fileID: 146596434}
   - {fileID: 4002114}
+  - {fileID: 378709919}

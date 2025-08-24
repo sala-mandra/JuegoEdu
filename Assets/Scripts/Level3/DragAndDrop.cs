@@ -56,7 +56,6 @@ public class DragAndDrop : MonoBehaviour
         {
             if (hit.transform)
             {
-                Debug.Log("Sobre un Target: " + hit.collider.name);
                 _transformTarget = hit.transform;
                 _overTarget = true;
             }

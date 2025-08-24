@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.Video;
 
 public class StartGameController : MonoBehaviour
 {
     [SerializeField] private SOLevelSpiral _soLevelSpiral;
     [SerializeField] private GameObject _containerStartGame;
     [SerializeField] private GameObject _panelMenuSpiral;
+    [SerializeField] private GameObject _audioSourceMapa;
 
     private void Start()
     {
@@ -21,6 +21,7 @@ public class StartGameController : MonoBehaviour
         }
         else
         {
+            _audioSourceMapa.SetActive(true);
             _panelMenuSpiral.SetActive(true);
             _containerStartGame.SetActive(false);
         }
