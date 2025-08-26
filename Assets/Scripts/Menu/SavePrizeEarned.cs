@@ -34,7 +34,8 @@ public class SavePrizeEarned : MonoBehaviour
 
             gfx.DrawImage(xImage, 0, 0, page.Width, page.Height);
 
-            string filePath = Path.Combine(GetDownloadsPath(), _nameFile);
+            //string filePath = Path.Combine(GetDownloadsPath(), _nameFile);
+            string filePath = Path.Combine(Application.persistentDataPath, _nameFile);
             document.Save(filePath);
             document.Close();
 
