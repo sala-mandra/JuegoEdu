@@ -13,7 +13,7 @@ public class ObjectFoundController : MonoBehaviour
     public void ObjectFound()
     {
         var colorTemp = _imageComponent.color;
-        colorTemp.a = 255;
+        colorTemp.a = 1f;
         _imageComponent.color = colorTemp;
     }
 }

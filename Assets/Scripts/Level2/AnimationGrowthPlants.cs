@@ -26,6 +26,7 @@ public class AnimationGrowthPlants : MonoBehaviour
         var pos = transform.localPosition;
         pos.y = _rateDownPlant;
         transform.localPosition = pos;
+        transform.gameObject.SetActive(false);
     }
 
     private IEnumerator StartAnimationPlantGrowth()

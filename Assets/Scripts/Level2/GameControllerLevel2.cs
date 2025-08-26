@@ -12,8 +12,8 @@ public class GameControllerLevel2 : MonoBehaviour
     public static GameControllerLevel2 Instance;
     public Phase CurrentPhase = Phase.Collecting;
 
-    [Header("Part for work in logic")] [SerializeField]
-    private SOLevelSpiral _soLevelSpiral;
+    [Header("Part for work in logic")] 
+    [SerializeField] private SOLevelSpiral _soLevelSpiral;
 
     [SerializeField] private float _percentageLessScale = 0.7f;
     [SerializeField] List<ObjectsToSpawn> _partsToSpawn;
@@ -45,7 +45,7 @@ public class GameControllerLevel2 : MonoBehaviour
     private int _currentBaseGuide;
     private Coroutine _coroutineShowName;
     private bool _showTextTurn;
-
+    private int _idLevel = 2; 
 
     private void Awake()
     {
@@ -283,7 +283,7 @@ public class GameControllerLevel2 : MonoBehaviour
     private void EndGame()
     {
         Debug.Log("Ya ha terminado el juego");
-        LevelsController.Instance.CompleteLevel();
+        LevelsController.Instance.CompleteLevel(_idLevel);
         _panelFinal.SetActive(true);
         _audioSource.PlayOneShot(_effectFinalAudio);
     }

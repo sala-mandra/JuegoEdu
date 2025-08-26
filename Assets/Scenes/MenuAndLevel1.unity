@@ -1536,6 +1536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6200604788c8d4e954565fcfd6e6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soLevelSpiral: {fileID: 11400000, guid: 11f7e85c1315f3d409fd792c6ad93792, type: 2}
   _panelDownload: {fileID: 743986126}
   _panelGameOver: {fileID: 512850084}
   _buttonRestart: {fileID: 2022097254}
@@ -3618,7 +3619,13 @@ MonoBehaviour:
   _soLevelSpiral: {fileID: 11400000, guid: 11f7e85c1315f3d409fd792c6ad93792, type: 2}
   _panelForLevelOne: {fileID: 1052487896}
   _panelMenuSpiral: {fileID: 1440404315}
-  _objectToFound: []
+  _objectToFound:
+  - {fileID: 391747774}
+  - {fileID: 1981579758}
+  - {fileID: 552905336}
+  - {fileID: 531380897}
+  - {fileID: 278486155}
+  - {fileID: 887173861}
   _panelDescription: {fileID: 1693031571}
   _textNameObject: {fileID: 1132424077}
   _textSecondNameObject: {fileID: 556339154}
@@ -4581,7 +4588,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1385227033}
+      - m_Target: {fileID: 512758036}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -4592,6 +4599,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 984637452}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &832380220
 MonoBehaviour:
@@ -5267,6 +5286,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 984637452}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &893474682
 MonoBehaviour:

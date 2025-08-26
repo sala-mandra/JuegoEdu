@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelsController : MonoBehaviour
 {
@@ -10,42 +8,23 @@ public class LevelsController : MonoBehaviour
     
     private void Awake()
     {
-        Array.Resize(ref _soLevelSpiral.LevelsComplete, _soLevelSpiral.MaxLevel);
-        if (Instance == null)
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        else if (Instance != this)
-        {
-            Destroy(Instance);
-        }
-        
-        DontDestroyOnLoad(Instance);
     }
 
-    public void CompleteLevel()
+    public void CompleteLevel(int idLevel)
     {
-        var levelTemp = _soLevelSpiral.LevelsComplete[_soLevelSpiral.Level];
-        if (_soLevelSpiral.Level <= _soLevelSpiral.MaxLevel && !levelTemp)
+        if (!_soLevelSpiral.LevelsComplete.Contains(idLevel))
         {
-            _soLevelSpiral.LevelsComplete[_soLevelSpiral.Level] = true;
+            _soLevelSpiral.LevelsComplete.Add(idLevel);
             _soLevelSpiral.Level++;
         }
-        else if (_soLevelSpiral.Level <= _soLevelSpiral.MaxLevel)
-        {
-            _soLevelSpiral.Level++;
-        }
-    }
-
-    public void RestartGame()
-    {
-        _soLevelSpiral.Level = 0;
-        _soLevelSpiral.LevelsComplete = new bool[_soLevelSpiral.MaxLevel];
-        SceneManager.LoadScene("MenuAndLevel1");
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
     }
 }

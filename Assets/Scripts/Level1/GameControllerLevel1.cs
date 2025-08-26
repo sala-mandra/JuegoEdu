@@ -28,6 +28,7 @@ public class GameControllerLevel1 : MonoBehaviour
 
     private AudioClip _currentAudioNameObject;
     private List<IDDesiredObject> _foundObjectsList = new List<IDDesiredObject>();
+    private int _idLevel = 1;
     
     private void Awake()
     {
@@ -42,7 +43,7 @@ public class GameControllerLevel1 : MonoBehaviour
         foreach (var objectTemp in _objectToFound)
         {
             var colorTemp = objectTemp.color;
-            colorTemp.a = 150f;
+            colorTemp.a = 0.6f;
             objectTemp.color = colorTemp;
         }
         _foundObjectsList.Clear();
@@ -87,7 +88,7 @@ public class GameControllerLevel1 : MonoBehaviour
     
     private void EndLevel()
     {
-        LevelsController.Instance.CompleteLevel();
+        LevelsController.Instance.CompleteLevel(_idLevel);
         SpiralController.Instance.EndLevelOne();
     }
 

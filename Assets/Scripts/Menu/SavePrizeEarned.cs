@@ -3,10 +3,12 @@ using System.IO;
 using UnityEngine;
 using PdfSharpCore.Pdf;
 using PdfSharpCore.Drawing;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SavePrizeEarned : MonoBehaviour
 {
+    [SerializeField] private SOLevelSpiral _soLevelSpiral;
     [SerializeField] private GameObject _panelDownload;
     [SerializeField] private GameObject _panelGameOver;
     [SerializeField] private Button _buttonRestart;
@@ -14,7 +16,7 @@ public class SavePrizeEarned : MonoBehaviour
     [SerializeField] private Texture2D _imagePrize;
     [SerializeField] private GameObject _textIsSaved;
 
-    private string _nameFile = "prize.pdf";
+    private string _nameFile = "MisakPiurek_RegaloEspiral.pdf";
 
     public void SaveAsPDF()
     {
@@ -34,7 +36,6 @@ public class SavePrizeEarned : MonoBehaviour
 
             gfx.DrawImage(xImage, 0, 0, page.Width, page.Height);
 
-            //string filePath = Path.Combine(GetDownloadsPath(), _nameFile);
             string filePath = Path.Combine(Application.persistentDataPath, _nameFile);
             document.Save(filePath);
             document.Close();
@@ -43,24 +44,27 @@ public class SavePrizeEarned : MonoBehaviour
             StartCoroutine(NotificationOfSaved());
         }
     }
-    
-    private string GetDownloadsPath()
-    {
-        using (var environment = new AndroidJavaClass("android.os.Environment"))
-        {
-            var downloadsDir = environment.CallStatic<AndroidJavaObject>("getExternalStoragePublicDirectory", environment.GetStatic<string>("DIRECTORY_DOWNLOADS"));
-            return downloadsDir.Call<string>("getAbsolutePath");
-        }
-    }
 
     private IEnumerator NotificationOfSaved()
     {
-        _buttonRestart.onClick.AddListener(LevelsController.Instance.RestartGame);
-        _buttonExit.onClick.AddListener(LevelsController.Instance.ExitGame);
+        _buttonRestart.onClick.AddListener(RestartGame);
+        _buttonExit.onClick.AddListener(ExitGame);
         _textIsSaved.SetActive(true);
         yield return new WaitForSeconds(2);
         _textIsSaved.SetActive(false);
         _panelDownload.SetActive(false);
         _panelGameOver.SetActive(true);
+    }
+    
+    private void RestartGame()
+    {
+        _soLevelSpiral.Level = 0;
+        _soLevelSpiral.LevelsComplete.Clear();
+        SceneManager.LoadScene("MenuAndLevel1");
+    }
+
+    private void ExitGame()
+    {
+        Application.Quit();
     }
 }

@@ -25,6 +25,8 @@ public class CampfireController : MonoBehaviour
     private int _currentQuestion;
     private bool _endGame;
 
+    private int _idLevel = 3;
+
     private void Awake()
     {
         _colliderFire = GetComponent<BoxCollider>();
@@ -48,7 +50,7 @@ public class CampfireController : MonoBehaviour
         {
             Debug.Log("Termino el juego");
             _audioSourceFeedback.PlayOneShot(_effectFinalSound);
-            LevelsController.Instance.CompleteLevel();
+            LevelsController.Instance.CompleteLevel(_idLevel);
             _endGame = true;
             _panelFinal.SetActive(true);
         }
