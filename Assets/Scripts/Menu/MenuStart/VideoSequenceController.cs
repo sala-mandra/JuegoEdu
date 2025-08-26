@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class VideoSequenceController : MonoBehaviour
@@ -8,12 +9,11 @@ public class VideoSequenceController : MonoBehaviour
     [SerializeField] private GameObject _panelMenuSpiral;
     [SerializeField] private GameObject _containerStartGamePanels;
     [SerializeField] private GameObject _audioSourceMenu;
+    [SerializeField] private GameObject _viewOriginLaw;
+    [SerializeField] private GameObject _viewPresentation;
 
-    private VideoPlayer _vp;
-    
     private void Start()
     {
-        _vp = _videoOriginLaw;
         _videoOriginLaw.loopPointReached += OnFirstVideoEnd;
         _videoPresentation.loopPointReached += OnSecondVideoEnd;
     }
@@ -34,12 +34,14 @@ public class VideoSequenceController : MonoBehaviour
     
     private void OnFirstVideoEnd(VideoPlayer video1)
     {
-        _vp = _videoPresentation;
+        _viewOriginLaw.SetActive(false);
+        _viewPresentation.SetActive(true);
         _videoPresentation.Play();
     }
 
     private void OnSecondVideoEnd(VideoPlayer video2)
     {
+        _viewPresentation.SetActive(false);
         _containerStartGamePanels.SetActive(false);
         _panelMenuSpiral.SetActive(true);
         _audioSourceMenu.SetActive(true);

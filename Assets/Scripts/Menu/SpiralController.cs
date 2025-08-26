@@ -137,6 +137,7 @@ public class SpiralController : MonoBehaviour
         
         if (_soLevelSpiral.Level == _soLevelSpiral.MaxLevel)
         {
+            yield return new WaitForSeconds(1.5f);
             FinalEvent();
         }
     }

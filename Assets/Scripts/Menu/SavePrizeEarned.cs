@@ -34,7 +34,7 @@ public class SavePrizeEarned : MonoBehaviour
 
             gfx.DrawImage(xImage, 0, 0, page.Width, page.Height);
 
-            string filePath = Path.Combine(Application.persistentDataPath, _nameFile);
+            string filePath = Path.Combine(GetDownloadsPath(), _nameFile);
             document.Save(filePath);
             document.Close();
 
@@ -42,15 +42,24 @@ public class SavePrizeEarned : MonoBehaviour
             StartCoroutine(NotificationOfSaved());
         }
     }
+    
+    private string GetDownloadsPath()
+    {
+        using (var environment = new AndroidJavaClass("android.os.Environment"))
+        {
+            var downloadsDir = environment.CallStatic<AndroidJavaObject>("getExternalStoragePublicDirectory", environment.GetStatic<string>("DIRECTORY_DOWNLOADS"));
+            return downloadsDir.Call<string>("getAbsolutePath");
+        }
+    }
 
     private IEnumerator NotificationOfSaved()
     {
+        _buttonRestart.onClick.AddListener(LevelsController.Instance.RestartGame);
+        _buttonExit.onClick.AddListener(LevelsController.Instance.ExitGame);
         _textIsSaved.SetActive(true);
         yield return new WaitForSeconds(2);
         _textIsSaved.SetActive(false);
         _panelDownload.SetActive(false);
         _panelGameOver.SetActive(true);
-        _buttonRestart.onClick.AddListener(LevelsController.Instance.RestartGame);
-        _buttonExit.onClick.AddListener(LevelsController.Instance.ExitGame);
     }
 }
