@@ -2687,7 +2687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -118}
+  m_AnchoredPosition: {x: 0, y: -93}
   m_SizeDelta: {x: 1994, y: 370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075120713
@@ -3160,7 +3160,7 @@ MonoBehaviour:
       nacimientos, lagunas y r\xEDos."
     - "Para los Misak, el territorio \u201Chabla\u201D a trav\xE9s del agua, sobre
       todo mediante la pesca y las fuertes lluvias."
-    - "ara los Misak, el agua es nakchak, voz del territorio. Escucharla es cuidar
+    - "Para los Misak, el agua es nakchak, voz del territorio. Escucharla es cuidar
       r\xEDos, lagunas y nacimientos."
     CorrectAnswerIndex: 0
   - Options:
@@ -3181,6 +3181,7 @@ MonoBehaviour:
     CorrectAnswerIndex: 2
   _panelAnswerLong: {fileID: 256908523}
   _panelMultipleAnswer: {fileID: 2108749172}
+  _timeForWaitNextQuestion: 3
 --- !u!4 &1314271734
 Transform:
   m_ObjectHideFlags: 0
@@ -4153,7 +4154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -368}
+  m_AnchoredPosition: {x: 0, y: -320}
   m_SizeDelta: {x: 1994, y: 370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1698280515

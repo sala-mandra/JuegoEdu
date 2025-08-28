@@ -3124,7 +3124,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555983985}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 881ba2207c537f24baa173343437e3b4, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 3a080566765f2304db55073d64a9424a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 330585545}
@@ -6284,7 +6284,7 @@ MonoBehaviour:
     NameObject: il'i
     SecondNameObject: "C\xF3ndor"
     DescriptionObject: "Gran ave andina que vuela muy alto y lo ve todo; une monta\xF1as
-      y nubes, comunidad y a la Tierra."
+      y nubes, comunidad y a la tierra."
     ImageOfObject: {fileID: 21300000, guid: 82dfb9e186d50f9489a6f449beae5b71, type: 3}
   _objectFoundController: {fileID: 1981579760}
 --- !u!1 &1113569079
@@ -7248,8 +7248,8 @@ MonoBehaviour:
     ClipNameObject: {fileID: 8300000, guid: 02f4dcb0f545e324da787a866b2af28b, type: 3}
     NameObject: lus
     SecondNameObject: Flauta
-    DescriptionObject: "Habla con el viento. Su sonido llama a la alegr\xEDa y a
-      los abuelos; nos ense\xF1a a escuchar y a caminar en armon\xEDa con el territorio."
+    DescriptionObject: "Habla con el viento. Su sonido llama a la alegr\xEDa; nos
+      ense\xF1a a escuchar y a caminar en armon\xEDa con el territorio."
     ImageOfObject: {fileID: 21300000, guid: 933a403e55b58a747bab3221a34befb7, type: 3}
   _objectFoundController: {fileID: 391747776}
 --- !u!1 &1229031083
@@ -7296,7 +7296,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229031083}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 0d2f809c30f3b474b8847b3b73456406, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 3580819e54a017c42aabe95b7f7c2d25, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 330585545}
@@ -8172,7 +8172,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424526756}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 0d2f809c30f3b474b8847b3b73456406, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 3580819e54a017c42aabe95b7f7c2d25, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 330585545}
