@@ -17,6 +17,12 @@ public class VideoSequenceController : MonoBehaviour
         _videoOriginLaw.loopPointReached += OnFirstVideoEnd;
         _videoPresentation.loopPointReached += OnSecondVideoEnd;
     }
+
+    public void StartFirstVideo()
+    {
+        _viewOriginLaw.SetActive(true);
+        _videoOriginLaw.Play();
+    }
     
     public void SkipVideo()
     {

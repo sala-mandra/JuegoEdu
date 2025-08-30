@@ -6,6 +6,7 @@ public class StartGameController : MonoBehaviour
     [SerializeField] private GameObject _containerStartGame;
     [SerializeField] private GameObject _panelMenuSpiral;
     [SerializeField] private GameObject _audioSourceMapa;
+    [SerializeField] private GameObject _panelStartGame;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class StartGameController : MonoBehaviour
         if (_soLevelSpiral.Level == 0)
         {
             _containerStartGame.SetActive(true);
+            _panelStartGame.SetActive(true);
             _panelMenuSpiral.SetActive(false);
         }
         else
