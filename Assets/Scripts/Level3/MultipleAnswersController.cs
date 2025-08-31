@@ -29,6 +29,7 @@ public class MultipleAnswersController : MonoBehaviour
         for (var i = 0; i < _textsOptionAnswer.Length; i++)
         {
             _textsOptionAnswer[i].GetComponentInParent<AnswerController>().RestarAnswer();
+            _textsOptionAnswer[i].GetComponentInParent<AnswerController>().enabled = true;
             _textsOptionAnswer[i].text = answersTemp.Options[i];
         }
     }
@@ -49,6 +50,14 @@ public class MultipleAnswersController : MonoBehaviour
 
         StartCoroutine(TimeForViewAnswerResult());
         Debug.Log($"Respuest seleccionada: {selectedOption}");
+    }
+
+    public void DisableAnswer()
+    {
+        for (var i = 0; i < _textsOptionAnswer.Length; i++)
+        {
+            _textsOptionAnswer[i].GetComponentInParent<AnswerController>().enabled = false;
+        }
     }
     
     private IEnumerator TimeForViewAnswerResult()

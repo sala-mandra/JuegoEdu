@@ -14,6 +14,7 @@ public class AnswerController : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         MultipleAnswersController.Instance.AnswerSelected(_indexOption);
+        MultipleAnswersController.Instance.DisableAnswer();
     }
 
     public void RestarAnswer()
