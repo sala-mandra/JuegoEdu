@@ -7783,7 +7783,7 @@ MonoBehaviour:
       TextBoxCharacter: {fileID: 1819224559}
       ImageCharacter: {fileID: 848977358}
     CharacterTwoLine:
-      TextLine: "\xA1unkua unkua, muchas gracias! Queremos darte una pulsera de regalo
+      TextLine: "unkua unkua, !muchas gracias! Queremos darte una pulsera de regalo
         por tu gran trabajo. Gu\xE1rdala, impr\xEDmela, comp\xE1rtela y \xFAsala.
         Recuerda: pervivimos cuando caminamos juntas y juntos en espiral."
       TalkingSprite: {fileID: 21300000, guid: 797b142afed23c043a52e9c51795fb4a, type: 3}
